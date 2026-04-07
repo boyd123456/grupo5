@@ -7,5 +7,13 @@
         public string Name { get; set; }
         public string Description { get; set; }
         public string Apellido { get; set; }
+        ////jdfjdjdjd
+        public int ApellidoId { get; set; }
+        public int ApellidoId { get; set; }
+
+
+        
+        public int caballero { get; set; }
+
     }
 }
