@@ -1,7 +1,6 @@
 ﻿namespace PlataExpress.Models
 {
-    public class Roll
+    public class anotacionBaseDeDatos
     {
-        
     }
 }
