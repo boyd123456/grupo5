@@ -14,7 +14,7 @@ namespace PlataExpress.Models
         public string Apellidos { get; set; }
 
         [Required(ErrorMessage = "Este Campo es obligatoriuo")]
-        public string correo { get; set; }
+       public string correo { get; set; }
 
         [Required(ErrorMessage = "Este Campo es obligatoriuo")]
         public string contraseña { get; set; }
@@ -31,6 +31,6 @@ namespace PlataExpress.Models
 
         public DateTime FechaCreacion { get; set; } 
 
-        public bool rol  { get; set; } ;
+        public bool rol  { get; set; } 
     }
 }
