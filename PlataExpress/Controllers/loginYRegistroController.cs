@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using PlataExpress.Models;
 
 namespace PlataExpress.Controllers
@@ -54,7 +54,7 @@ namespace PlataExpress.Controllers
             }
             else if (model.NombreDeUsuario == "usuario" && model.ClaveDeUsuario == "123")
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("PanelUsuario", "Usuario", new { NombreDeUsuario = model.NombreDeUsuario });
             }
             else
             {

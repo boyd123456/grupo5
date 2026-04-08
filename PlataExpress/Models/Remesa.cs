@@ -2,7 +2,7 @@
 {
     public class Remesa
     {
-        public int Id { get; set; }
+        public int IdRemesa { get; set; }
         public string TipoOperacion { get; set; }
         public string Nombre { get; set; }
         public string Agencia { get; set; }

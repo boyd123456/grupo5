@@ -5,7 +5,7 @@ namespace PlataExpress.Models
     public class RegisterUsuarios
 
     {
-        public int Id { get; set; }
+        public int IdUsuario { get; set; }
 
         [Required(ErrorMessage = "Los nombres son obligatorios.")]
         public string Nombres { get; set; }

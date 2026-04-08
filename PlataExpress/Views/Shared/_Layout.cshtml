@@ -1,10 +1,11 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Plata Express</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/PlataExpress.styles.css" asp-append-version="true" />
 </head>
@@ -31,40 +32,114 @@
 
                     </ul>
                 </div>
+    @if (ViewData["HideHeaderFooter"] as bool? != true)
+    {
+        <header>
+            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+                <div class="container-fluid">
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Plata Express</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                        <ul class="navbar-nav flex-grow-1">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="ComoFuncionamos">¿Como Funcionamos?</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Destinos">Destinos</a>
+                            </li>
+                        <div class="btns">
+                                <a class="btn_login" asp-controller="loginYRegistro" asp-action="Login">Iniciar sesión</a>
+                                <a class="btn_registro ms-2" asp-controller="loginYRegistro" asp-action="Register">Registrarse</a>
+                        </ul>
+                    </div>
 
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
+                </div>
+            </nav>
+        </header>
+    }
+    <div class="container-fluid px-0">
+        <main role="main">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="site-footer">
-        <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
-            <div class="mb-3 mb-md-0">
-                <strong>PlataExpress</strong>
-                <div class="small">Envíos internacionales seguros desde Perú</div>
-            </div>
+    @if (ViewData["HideHeaderFooter"] as bool? != true)
+    {
+        <footer class="site-footer bg-dark-slate pt-5 pb-3">
+            <div class="container">
+                <div class="row g-4 mb-4">
+                    <!-- Brand Column -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="d-flex align-items-center mb-3">
+                            <h3 class="fw-bold mb-0 text-white">Plata Express</h3>
+                        </div>
+                        <p class="text-white-50 small mb-4" style="max-width: 300px;">
+                            La plataforma más rápida y segura para enviar dinero desde Perú al resto del mundo, apoyando a miles de familias a conectar.
+                        </p>
+                        <div class="social-icons-footer d-flex gap-3">
+                            <a href="#" class="text-white-50 hover-white transition"><i class="bi bi-facebook fs-5"></i></a>
+                            <a href="#" class="text-white-50 hover-white transition"><i class="bi bi-twitter fs-5"></i></a>
+                            <a href="#" class="text-white-50 hover-white transition"><i class="bi bi-instagram fs-5"></i></a>
+                            <a href="#" class="text-white-50 hover-white transition"><i class="bi bi-linkedin fs-5"></i></a>
+                        </div>
+                    </div>
 
-            <div class="d-flex gap-4 mb-3 mb-md-0">
-                <div>
-                    <div class="small fw-bold">Enlaces</div>
-                    <div class="small"><a asp-area="" asp-controller="Home" asp-action="Index">Inicio</a></div>
-                    <div class="small"><a href="#">Destinos</a></div>
-                    <div class="small"><a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a></div>
+                    <!-- Links Column -->
+                    <div class="col-lg-2 col-md-6">
+                        <h6 class="text-white fw-bold mb-3">Enlaces Rápidos</h6>
+                        <ul class="list-unstyled footer-links mb-0">
+                            <li class="mb-2"><a asp-controller="Home" asp-action="Index" class="text-white-50 text-decoration-none transition">Inicio</a></li>
+                            <li class="mb-2"><a asp-controller="Home" asp-action="ComoFuncionamos" class="text-white-50 text-decoration-none transition">¿Cómo funcionamos?</a></li>
+                            <li class="mb-2"><a asp-controller="Home" asp-action="Destinos" class="text-white-50 text-decoration-none transition">Destinos</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Legal Column -->
+                    <div class="col-lg-2 col-md-6">
+                        <h6 class="text-white fw-bold mb-3">Soporte</h6>
+                        <ul class="list-unstyled footer-links mb-0">
+                            <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none transition">Centro de Ayuda</a></li>
+                            <li class="mb-2"><a asp-controller="Home" asp-action="Privacy" class="text-white-50 text-decoration-none transition">Privacidad</a></li>
+                            <li class="mb-2"><a href="#" class="text-white-50 text-decoration-none transition">Términos Legales</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Contact Column -->
+                    <div class="col-lg-4 col-md-6">
+                        <h6 class="text-white fw-bold mb-3">Contáctanos</h6>
+                        <ul class="list-unstyled mb-0 text-white-50 small">
+                            <li class="mb-3 d-flex align-items-center">
+                                <i class="bi bi-envelope-at me-3 text-primary fs-5"></i>
+                                soporte@plataexpress.pe
+                            </li>
+                            <li class="mb-3 d-flex align-items-center">
+                                <i class="bi bi-telephone text-primary me-3 fs-5"></i>
+                                +51 987 654 321
+                            </li>
+                            <li class="d-flex align-items-center">
+                                <i class="bi bi-geo-alt text-primary me-3 fs-5"></i>
+                                Av. Principal 123, San Isidro, Lima - Perú
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <div>
-                    <div class="small fw-bold">Contacto</div>
-                    <div class="small">soporte@plataexpress.pe</div>
-                    <div class="small">+51 987 654 321</div>
+
+                <hr class="border-secondary opacity-25 mb-4">
+                
+                <div class="d-flex flex-column flex-md-row justify-content-between align-items-center">
+                    <div class="small text-white-50 mb-2 mb-md-0">
+                        &copy; 2026 PlataExpress. Todos los derechos reservados.
+                    </div>
+                    <div class="small text-white-50">
+                        Desarrollado con <i class="bi bi-shield-check text-success mx-1"></i> seguridad y confianza.
+                    </div>
                 </div>
             </div>
-
-            <div class="small">&copy; 2026 PlataExpress. Todos los derechos reservados.</div>
-        </div>
-    </footer>
+        </footer>
+    }
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
