@@ -130,6 +130,7 @@ body {
 
 .btn_login {
     border: none;
+    color: #fff
 }
 .btn_registro {
     border: none;
@@ -175,20 +176,40 @@ body {
 }
 
 .btn_login {
-  background: transparent;
-  color: rgba(255,255,255,0.95);
+  background: transparent !important;
+  color: #fff !important;
+  opacity: 1 !important;
   border: 1px solid rgba(255,255,255,0.12);
   padding: 8px 16px;
   border-radius: 20px;
   cursor: pointer;
+  display: inline-block;
+  z-index: 1500;
 }
 .btn_login:hover {
-  background: rgba(255,255,255,0.03);
+  background: rgba(255,255,255,0.06);
+  color: #fff !important;
+}
+
+.btn_login:focus { outline: none; box-shadow: 0 0 0 0.15rem rgba(37,99,235,0.25); }
+
+/* Ensure visibility when Bootstrap's btn classes (anchor or outline) are used */
+.btns .btn, .btns a.btn, .btns .btn_login, a.btn_login {
+  color: #fff !important;
+  background: transparent !important;
+  opacity: 1 !important;
+  border-color: rgba(255,255,255,0.12) !important;
+}
+
+.btns a.btn.btn-outline-dark {
+  color: #fff !important;
+  background: transparent !important;
+  border-color: rgba(255,255,255,0.12) !important;
 }
 
 .btn_registro {
     background: linear-gradient(90deg, #4aa3ff, #1e66ff);
-    color: #fff; /*cambio de color del texto del boton de registro*/
+    color: #fff;
     padding: 8px 18px;
     border-radius: 26px;
     box-shadow: 0 6px 20px rgba(30,102,255,0.22);
