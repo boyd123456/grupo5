@@ -1,4 +1,5 @@
-﻿namespace PlataExpress.Models
+﻿using System;
+namespace PlataExpress.Models
 {
     public class ErrorViewModel
     {
