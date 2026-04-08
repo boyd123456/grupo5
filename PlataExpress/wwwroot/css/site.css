@@ -47,10 +47,6 @@ body {
   background: transparent;
 }
 
-.hero .container>.row {
-  /* Removed white boxed background to allow full-width bleeding */
-}
-
 .hero .row {
   align-items: center;
 }
@@ -766,7 +762,6 @@ body:has(.register-wrapper) {
   animation: fadeIn 0.2s ease-out;
 }
 
-/* Password Toggle Icon */
 .password-wrapper {
   width: 100%;
 }
@@ -791,7 +786,6 @@ body:has(.register-wrapper) {
   padding-right: 40px;
 }
 
-/* Footer Styles */
 .bg-dark-slate {
   background-color: #0f172a !important;
 }
