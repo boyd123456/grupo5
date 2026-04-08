@@ -19,10 +19,9 @@ html {
 
 body {
   margin-bottom: 60px;
-  /* Blanco suave de fondo para apariencia limpia */
   background: #f6f7fb;
   min-height: 100vh;
-  color: #0f1724; /* texto oscuro por defecto */
+  color: #0f1724;
 }
 
 .container {
@@ -40,16 +39,13 @@ body {
 
 .hero { 
   padding: 80px 0 100px 0;
-  /* Hacer que el área hero parezca una tarjeta blanca centrada */
   background: transparent;
 }
 
-/* Caja interna blanca que resalta el contenido sobre el fondo claro */
 .hero .container > .row {
   background: #ffffff;
   border-radius: 12px;
   padding: 36px 36px 48px 36px;
-  /* Remove large outer shadow so page edges stay clean. Keep a subtle border instead. */
   box-shadow: none;
   border: 1px solid rgba(15,23,36,0.02);
 }
@@ -81,7 +77,6 @@ body {
 .card.ref-card {
   background: #ffffff;
   border: 1px solid rgba(15,23,36,0.06);
-  /* Sombreado más marcado y suave alrededor de la tarjeta */
   box-shadow: 0 20px 40px rgba(15,23,36,0.12), 0 6px 18px rgba(15,23,36,0.08), inset 0 1px 0 rgba(255,255,255,0.6);
   border-radius: 12px;
 }
@@ -97,7 +92,6 @@ body {
 
 .lead { color: rgba(15,23,36,0.75) !important; }
 
-/* About / Services */
 .about-section { padding-top: 40px; padding-bottom: 40px; }
 .about-section h2 { color: #0f1724; }
 .services-grid { gap: 16px; display:flex; }
@@ -107,7 +101,6 @@ body {
 
 .trust-section { border-top: 1px solid rgba(15,23,36,0.04); padding-top: 28px; padding-bottom: 28px; text-align:center; }
 
-/* Footer */
 .site-footer { border-top: 1px solid rgba(15,23,36,0.04); padding: 40px 0; color: rgba(15,23,36,0.85); font-size: 0.95rem; background: #ffffff; }
 .site-footer a { color: rgba(15,23,36,0.9); text-decoration: none; font-size: 0.95rem; }
 .site-footer a:hover { text-decoration: underline; }
@@ -143,9 +136,8 @@ body {
 }
 
 .navbar {
-    background: linear-gradient(180deg, #071426 0%, #071a2b 60%) !important; /*Con esta linea de aqui se puede cambiar el color de la barra de arriba con #071426 0% se cambia el color de la mitad de la barra para arriba y con #071a2b 60% se cambia de la mitar para abajo*/
+    background: linear-gradient(180deg, #071426 0%, #071a2b 60%) !important;
     border-bottom: 1px solid rgba(255,255,255,0.02);
-    /* Aumentar altura vertical del menú */
     padding-top: 0.9rem;
     padding-bottom: 0.9rem;
 }
@@ -164,7 +156,7 @@ body {
 }
 
 .navbar .nav-link {
-  color: rgba(255,255,255,0.85) !important; /*cambio de color del texto del menu de arriba*/
+  color: rgba(255,255,255,0.85) !important;
   margin: 0 0.6rem;
   font-size: 0.95rem;
   padding-top: 0.35rem;
@@ -184,7 +176,7 @@ body {
 
 .btn_login {
   background: transparent;
-  color: rgba(255,255,255,0.95); /*cambio de color del texto del boton de login*/
+  color: rgba(255,255,255,0.95);
   border: 1px solid rgba(255,255,255,0.12);
   padding: 8px 16px;
   border-radius: 20px;
