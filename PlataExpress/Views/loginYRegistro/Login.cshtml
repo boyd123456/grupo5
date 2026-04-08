@@ -42,7 +42,10 @@
 
                 <div class="login-group">
                     <label>Contraseña</label>
-                    <input asp-for="ClaveDeUsuario" type="password" placeholder="Ingresa tu contraseña" />
+                    <div class="password-wrapper position-relative">
+                        <input asp-for="ClaveDeUsuario" type="password" placeholder="Ingresa tu contraseña" id="loginPassword" />
+                        <i class="bi bi-eye-slash toggle-password" onclick="togglePassword('loginPassword', this)"></i>
+                    </div>
                     <span asp-validation-for="ClaveDeUsuario" class="error-text"></span>
                 </div>
 
@@ -63,7 +66,7 @@
 
                 <div class="login-terms">
                     Al hacer clic en "Ingresar ahora", aceptas nuestros <br />
-                    <a href="#">Términos de Servicio</a> | <a href="#">Política de Privacidad</a>
+                    <a href="#">Términos de Servicio</a> |<a asp-area="" asp-controller="Home" asp-action="Privacy" target="_blank">Privacy</a>
                 </div>
             </form>
         </div>
@@ -74,4 +77,18 @@
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
+    <script>
+        function togglePassword(inputId, icon) {
+            const input = document.getElementById(inputId);
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.classList.remove('bi-eye-slash');
+                icon.classList.add('bi-eye');
+            } else {
+                input.type = 'password';
+                icon.classList.remove('bi-eye');
+                icon.classList.add('bi-eye-slash');
+            }
+        }
+    </script>
 }

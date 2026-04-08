@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using PlataExpress.Models;
 using System.Diagnostics;
 
@@ -20,6 +20,16 @@ namespace PlataExpress.Controllers
         }
 
         public IActionResult Privacy()
+        {
+            return View();
+        }
+
+        public IActionResult ComoFuncionamos()
+        {
+            return View();
+        }
+
+        public IActionResult Destinos()
         {
             return View();
         }

@@ -10,66 +10,99 @@
     ViewData["HideHeaderFooter"] = true;
 }
 
-<div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card shadow rounded-4">
-                <div class="card-body p-4">
-                    <h2 class="text-center mb-4">Crear Cuenta</h2>
+<div class="register-wrapper">
+    <div class="register-split-container" style="max-width: 1100px;">
+        <div class="register-form">
+            <h2 class="right-title">Crear Cuenta</h2>
 
-                    <form asp-action="Register" method="post">
-                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+            <form asp-action="Register" method="post" class="split-form">
+                <div asp-validation-summary="ModelOnly" class="login-alert error mb-3"></div>
 
-                        <div class="mb-3">
-                            <label asp-for="Nombres" class="form-label"></label>
-                            <input asp-for="Nombres" class="form-control" />
-                            <span asp-validation-for="Nombres" class="text-danger"></span>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="login-group">
+                            <label asp-for="Nombres"></label>
+                            <input asp-for="Nombres" placeholder="Tus nombres" />
+                            <span asp-validation-for="Nombres" class="error-text"></span>
                         </div>
-
-                        <div class="mb-3">
-                            <label asp-for="Apellidos" class="form-label"></label>
-                            <input asp-for="Apellidos" class="form-control" />
-                            <span asp-validation-for="Apellidos" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="login-group">
+                            <label asp-for="Apellidos"></label>
+                            <input asp-for="Apellidos" placeholder="Tus apellidos" />
+                            <span asp-validation-for="Apellidos" class="error-text"></span>
                         </div>
-
-                        <div class="mb-3">
-                            <label asp-for="Correo" class="form-label"></label>
-                            <input asp-for="Correo" class="form-control" />
-                            <span asp-validation-for="Correo" class="text-danger"></span>
-                        </div>
-
-                        <div class="mb-3">
-                            <label asp-for="Usuario" class="form-label"></label>
-                            <input asp-for="Usuario" class="form-control" />
-                            <span asp-validation-for="Usuario" class="text-danger"></span>
-                        </div>
-
-                        <div class="mb-3">
-                            <label asp-for="Clave" class="form-label"></label>
-                            <input asp-for="Clave" class="form-control" />
-                            <span asp-validation-for="Clave" class="text-danger"></span>
-                        </div>
-
-                        <div class="mb-3">
-                            <label asp-for="Telefono" class="form-label"></label>
-                            <input asp-for="Telefono" class="form-control" />
-                            <span asp-validation-for="Telefono" class="text-danger"></span>
-                        </div>
-
-                        <div class="mb-3">
-                            <label asp-for="DNI" class="form-label"></label>
-                            <input asp-for="DNI" class="form-control" />
-                            <span asp-validation-for="DNI" class="text-danger"></span>
-                        </div>
-
-                        <button type="submit" class="btn btn-primary w-100">Registrarme</button>
-
-                        <div class="text-center mt-3">
-                            <a asp-controller="loginYRegistro" asp-action="Login">¿Ya tienes cuenta? Inicia sesión</a>
-                        </div>
-                    </form>
+                    </div>
                 </div>
-            </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="login-group">
+                            <label asp-for="DNI"></label>
+                            <input asp-for="DNI" placeholder="Documento de identidad" />
+                            <span asp-validation-for="DNI" class="error-text"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="login-group">
+                            <label asp-for="Telefono"></label>
+                            <input asp-for="Telefono" placeholder="Tu número" />
+                            <span asp-validation-for="Telefono" class="error-text"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="login-group">
+                    <label asp-for="Correo"></label>
+                    <input asp-for="Correo" type="email" placeholder="tucorreo@ejemplo.com" />
+                    <span asp-validation-for="Correo" class="error-text"></span>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="login-group">
+                            <label asp-for="Usuario"></label>
+                            <input asp-for="Usuario" placeholder="Nombre de usuario" />
+                            <span asp-validation-for="Usuario" class="error-text"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="login-group">
+                            <label asp-for="Clave"></label>
+                            <div class="password-wrapper position-relative">
+                                <input asp-for="Clave" type="password" placeholder="Crea una contraseña" id="registerPassword" />
+                                <i class="bi bi-eye-slash toggle-password" onclick="togglePassword('registerPassword', this)"></i>
+                            </div>
+                            <span asp-validation-for="Clave" class="error-text"></span>
+                            
+                            <div class="password-strength" id="strengthContainer" style="display: none;">
+                                <div class="strength-bars">
+                                    <div class="strength-bar" id="bar1"></div>
+                                    <div class="strength-bar" id="bar2"></div>
+                                    <div class="strength-bar" id="bar3"></div>
+                                    <div class="strength-bar" id="bar4"></div>
+                                </div>
+                                <span class="strength-text" id="strengthText">Seguridad</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="register-btn mt-2">Registrarme</button>
+
+                <div class="login-footer justify-content-center mt-4">
+                    <span class="text-muted me-2">¿Ya tienes cuenta?</span>
+                    <a class="register-link" asp-controller="loginYRegistro" asp-action="Login">Inicia sesión</a>
+                </div>
+            </form>
+        </div>
+
+        <!-- Right Side: Branding/Information -->
+        <div class="register-info">
+            <h1 class="left-title">Únete a<br />Plata Express</h1>
+            <p class="left-subtitle">
+                Gestionar tus envíos internacionales debe ser rápido, intuitivo y, sobre todo, seguro. Regístrate en nuestra plataforma y empieza a realizar operaciones con las mejores tasas.
+            </p>
         </div>
     </div>
 </div>
@@ -78,4 +111,73 @@
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
+    <script>
+        function togglePassword(inputId, icon) {
+            const input = document.getElementById(inputId);
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.classList.remove('bi-eye-slash');
+                icon.classList.add('bi-eye');
+            } else {
+                input.type = 'password';
+                icon.classList.remove('bi-eye');
+                icon.classList.add('bi-eye-slash');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const pwdInput = document.getElementById('registerPassword');
+            const container = document.getElementById('strengthContainer');
+            const text = document.getElementById('strengthText');
+            const bars = [
+                document.getElementById('bar1'),
+                document.getElementById('bar2'),
+                document.getElementById('bar3'),
+                document.getElementById('bar4')
+            ];
+
+            if (pwdInput) {
+                pwdInput.addEventListener('input', function() {
+                    const val = pwdInput.value;
+                    if (val.length > 0) {
+                        container.style.display = 'block';
+                    } else {
+                        container.style.display = 'none';
+                        return;
+                    }
+
+                    let score = 0;
+                    if (val.length > 5) score += 1;
+                    if (val.length > 8) score += 1; 
+                    if (/[A-Z]/.test(val)) score += 1;
+                    if (/[0-9]/.test(val)) score += 1;
+                    if (/[^A-Za-z0-9]/.test(val)) score += 1;
+
+                    // Reset classes
+                    bars.forEach(b => b.className = 'strength-bar');
+
+                    if (score <= 2) {
+                        text.textContent = 'Contraseña débil';
+                        text.style.color = '#ef4444';
+                        bars[0].classList.add('strength-weak');
+                    } else if (score === 3) {
+                        text.textContent = 'Contraseña aceptable';
+                        text.style.color = '#f59e0b';
+                        bars[0].classList.add('strength-fair');
+                        bars[1].classList.add('strength-fair');
+                    } else if (score === 4) {
+                        text.textContent = 'Contraseña buena';
+                        text.style.color = '#3b82f6';
+                        bars[0].classList.add('strength-good');
+                        bars[1].classList.add('strength-good');
+                        bars[2].classList.add('strength-good');
+                    } else {
+                        text.textContent = 'Contraseña fuerte';
+                        text.style.color = '#10b981';
+                        bars.forEach(b => b.classList.add('strength-strong'));
+                    }
+                });
+            }
+        });
+    </script>
 }
