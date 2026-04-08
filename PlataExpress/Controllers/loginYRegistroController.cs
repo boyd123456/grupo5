@@ -54,7 +54,7 @@ namespace PlataExpress.Controllers
             }
             else if (model.NombreDeUsuario == "usuario" && model.ClaveDeUsuario == "123")
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("PanelUsuario", "Usuario");
             }
             else
             {

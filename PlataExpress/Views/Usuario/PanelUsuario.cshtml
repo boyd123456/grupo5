@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Panel de Usuario";
+}
+
+<h2>Bienvenido</h2>
+
+<div class="container">
+
+    <a class="btn btn-primary" asp-controller="Usuario" asp-action="EnviarDinero">
+        Enviar dinero
+    </a>
+
+    <br /><br />
+
+    <a class="btn btn-success" asp-controller="Usuario" asp-action="MisEnvios">
+        Ver mis envíos
+    </a>
+
+    <br /><br />
+
+    <a class="btn btn-warning" asp-controller="Usuario" asp-action="EstadoOperacion">
+        Estado de operaciones
+    </a>
+
+</div>
