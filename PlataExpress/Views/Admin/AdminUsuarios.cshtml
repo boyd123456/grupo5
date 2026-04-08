@@ -28,7 +28,7 @@
                 var diasInactivo = (DateTime.Now - user.UltimaConexion).Days;
 
                 <tr>
-                    <td>@user.Id</td>
+                    <td>@user.IdAdmin</td>
                     <td>@user.Nombre</td>
                     <td>@user.Apellido</td>
                     <td>@user.FechaRegistro.ToShortDateString()</td>
@@ -47,11 +47,11 @@
                     <td>
                         @if (user.Activo)
                         {
-                            <a asp-action="Desactivar" asp-route-id="@user.Id" class="btn btn-danger btn-sm">Desactivar</a>
+                            <a asp-action="Desactivar" asp-route-id="@user.IdAdmin" class="btn btn-danger btn-sm">Desactivar</a>
                         }
                         else
                         {
-                            <a asp-action="Activar" asp-route-id="@user.Id" class="btn btn-success btn-sm">Activar</a>
+                            <a asp-action="Activar" asp-route-id="@user.IdAdmin" class="btn btn-success btn-sm">Activar</a>
                         }
                     </td>
                 </tr>
