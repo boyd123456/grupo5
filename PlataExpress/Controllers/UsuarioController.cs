@@ -1,12 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 
 namespace PlataExpress.Controllers
 {
     public class UsuarioController : Controller
     {
-        public IActionResult PanelUsuario()
+        public IActionResult PanelUsuario(string NombreDeUsuario)
         {
-            return View();
+            var model = new PlataExpress.Models.LoginViewModel { 
+                NombreDeUsuario = !string.IsNullOrEmpty(NombreDeUsuario) ? NombreDeUsuario : "Invitado" 
+            };
+            return View(model);
         }
 
         public IActionResult EnviarDinero()
