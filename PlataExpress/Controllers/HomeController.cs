@@ -2,6 +2,7 @@
 using PlataExpress.Models;
 using System.Diagnostics;
 
+
 namespace PlataExpress.Controllers
 {
     public class HomeController : Controller
