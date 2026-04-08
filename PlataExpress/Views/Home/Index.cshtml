@@ -1,1 +1,124 @@
-﻿asdasd
+﻿@{
+    ViewData["Title"] = "Inicio";
+}
+
+<div class="hero">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-7 left-panel">
+                <span class="badge bg-primary mb-3">Empresa registrada en la SBS</span>
+                <h1 class="display-4 fw-bold">Envía dinero al exterior<br/><span class="gradient-text">desde cualquier caja del Perú</span></h1>
+                <p class="lead">Realizamos transferencias internacionales mediante nuestros cajeros autorizados. Rápido, confiable y sin complicaciones para tus seres queridos en el extranjero.</p>
+
+                <div class="mt-4">
+                    <a class="btn btn-primary btn-lg me-2" asp-area="" asp-controller="Account" asp-action="Register">Crear cuenta gratis</a>
+                    <a class="btn btn-outline-light btn-lg" href="#">Ver cómo funciona</a>
+                </div>
+
+<!-- About / Company -->
+<section class="about-section py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <h2 class="h3 fw-bold">Sobre PlataExpress</h2>
+                <p class="text-muted">PlataExpress es una empresa peruana especializada en enviar dinero al exterior desde cualquier caja o punto autorizado. Ofrecemos giros y depósitos internacionales rápidos y seguros, con atención personalizada y años de experiencia en el mercado.</p>
+                <ul class="list-unstyled text-muted">
+                    <li>• Envíos por giro o depósito bancario</li>
+                    <li>• Cobertura a más de 30 países</li>
+                    <li>• Atención en puntos autorizados y cajeros aliados</li>
+                </ul>
+                <p class="mt-3">Nuestra prioridad es la confianza de nuestros usuarios: procesos auditados, transparencia en comisiones y soporte disponible cuando lo necesites.</p>
+            </div>
+            <div class="col-lg-6">
+                <div class="services-grid d-flex gap-3 flex-wrap">
+                    <div class="service-card p-3 flex-fill">
+                        <h5 class="mb-1">Rápido y seguro</h5>
+                        <p class="small text-muted mb-0">Procesos optimizados para que tu dinero llegue a tiempo.</p>
+                    </div>
+                    <div class="service-card p-3 flex-fill">
+                        <h5 class="mb-1">Soporte 24/7</h5>
+                        <p class="small text-muted mb-0">Asistencia por teléfono y correo para tus envíos.</p>
+                    </div>
+                    <div class="service-card p-3 flex-fill">
+                        <h5 class="mb-1">Comisiones claras</h5>
+                        <p class="small text-muted mb-0">Sin costos ocultos, información visible antes de enviar.</p>
+                    </div>
+                    <div class="service-card p-3 flex-fill">
+                        <h5 class="mb-1">Amplia cobertura</h5>
+                        <p class="small text-muted mb-0">Cubre los principales países de destino en Latinoamérica y EE. UU.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="trust-section py-4">
+    <div class="container text-center">
+        <p class="mb-1">Con la confianza de <strong>+50,000</strong> clientes y más de <strong>10 años</strong> de experiencia, PlataExpress te acompaña en cada envío.</p>
+        <a class="btn btn-outline-light mt-2" href="#">Conoce nuestros puntos autorizados</a>
+    </div>
+</section>
+
+                <div class="d-flex gap-4 mt-5">
+                    <div>
+                        <h5 class="mb-0">+50,000</h5>
+                        <small class="text-muted" style="color:rgba(255,255,255,0.7)">Clientes activos</small>
+                    </div>
+                    <div>
+                        <h5 class="mb-0">+120</h5>
+                        <small class="text-muted" style="color:rgba(255,255,255,0.7)">Cajeros en Perú</small>
+                    </div>
+                    <div>
+                        <h5 class="mb-0">+30</h5>
+                        <small class="text-muted" style="color:rgba(255,255,255,0.7)">Países destino</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-5">
+                <div class="card ref-card text-white">
+                    <div class="card-body">
+                        <h6 class="text-uppercase" style="opacity:.85">Referencia de envío</h6>
+
+                        <div class="amount-row my-3">
+                            <div class="amount-left">
+                                <div class="small text-muted">Tú envías</div>
+                                <div class="h5 mb-0">S/ 1,000.00</div>
+                                <div class="small text-muted">PEN - Soles peruanos</div>
+                            </div>
+
+                            <div class="amount-center text-center">
+                                <div class="badge bg-dark" style="opacity:.25; border-radius:50%; padding:10px 12px;">
+                                    ⇄
+                                </div>
+                            </div>
+
+                            <div class="amount-right text-end">
+                                <div class="small text-success">Ellos reciben</div>
+                                <div class="h5 mb-0 text-warning">$ 265.00</div>
+                                <div class="small text-muted">USD - Dólares americanos</div>
+                            </div>
+                        </div>
+
+                        <div class="info-list mb-3">
+                            <div class="info-item d-flex justify-content-between align-items-center">
+                                <div class="small-muted"><i class="bi bi-currency-exchange"></i> Tipo de cambio hoy</div>
+                                <div class="small-muted">1 USD = S/ 3.77</div>
+                            </div>
+                            <div class="info-item d-flex justify-content-between align-items-center mt-2">
+                                <div class="small-muted"><i class="bi bi-percent"></i> Comisión del servicio</div>
+                                <div class="text-success">5% = S/ 50.00</div>
+                            </div>
+                            <div class="info-item note d-flex align-items-center mt-2">
+                                <div class="small text-muted">⚠ Esta es una referencia visual. El tipo de cambio real se confirma en caja.</div>
+                            </div>
+                        </div>
+
+                        <a class="btn btn-primary w-100">Registrarme para enviar</a>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+

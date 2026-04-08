@@ -19,6 +19,120 @@ html {
 
 body {
   margin-bottom: 60px;
+  /* Blanco suave de fondo para apariencia limpia */
+  background: #f6f7fb;
+  min-height: 100vh;
+  color: #0f1724; /* texto oscuro por defecto */
+}
+
+.container {
+  max-width: 1200px;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.gradient-text {
+  background: linear-gradient(90deg,#2563eb,#8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.hero { 
+  padding: 80px 0 100px 0;
+  /* Hacer que el área hero parezca una tarjeta blanca centrada */
+  background: transparent;
+}
+
+/* Caja interna blanca que resalta el contenido sobre el fondo claro */
+.hero .container > .row {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 36px 36px 48px 36px;
+  /* Remove large outer shadow so page edges stay clean. Keep a subtle border instead. */
+  box-shadow: none;
+  border: 1px solid rgba(15,23,36,0.02);
+}
+
+
+.hero .row { align-items: center; }
+
+.left-panel { padding-right: 40px; }
+
+.ref-card { max-width: 380px; margin-left: auto; }
+
+.ref-card .amount-row {
+  display:flex; justify-content:space-between; align-items:center; background: #f8fafc; padding: 16px; border-radius: 10px; border: 1px solid rgba(15,23,36,0.04);
+}
+
+.ref-card .small-muted { color: rgba(15,23,36,0.6); }
+
+.ref-card .amount-left, .ref-card .amount-right { max-width: 45%; }
+.ref-card .amount-center { max-width: 10%; }
+.ref-card .info-list { padding: 12px 0; }
+.ref-card .info-item { background: #f1f5f9; padding:10px; border-radius:8px; color: #0f1724; }
+.ref-card .info-item.note { background: rgba(250,204,21,0.10); color: rgba(15,23,36,0.85); }
+
+@media (max-width: 991px) {
+  .left-panel { padding-right: 0; }
+  .ref-card { margin-left:0; margin-top:24px; }
+}
+
+.card.ref-card {
+  background: #ffffff;
+  border: 1px solid rgba(15,23,36,0.06);
+  /* Sombreado más marcado y suave alrededor de la tarjeta */
+  box-shadow: 0 20px 40px rgba(15,23,36,0.12), 0 6px 18px rgba(15,23,36,0.08), inset 0 1px 0 rgba(255,255,255,0.6);
+  border-radius: 12px;
+}
+
+.card.ref-card .card-body { padding: 20px; }
+
+.btn-primary {
+  background: linear-gradient(90deg,#2563eb,#1e3a8a) !important;
+  border: none !important;
+  color: #fff !important;
+  box-shadow: 0 8px 24px rgba(37,99,235,0.18);
+}
+
+.lead { color: rgba(15,23,36,0.75) !important; }
+
+/* About / Services */
+.about-section { padding-top: 40px; padding-bottom: 40px; }
+.about-section h2 { color: #0f1724; }
+.services-grid { gap: 16px; display:flex; }
+.service-card { background: #ffffff; border-radius: 10px; min-width: 45%; border: 1px solid rgba(15,23,36,0.04); box-shadow: none; padding: 18px; }
+.service-card h5 { color: #0f1724; }
+.service-card p { color: rgba(15,23,36,0.7); }
+
+.trust-section { border-top: 1px solid rgba(15,23,36,0.04); padding-top: 28px; padding-bottom: 28px; text-align:center; }
+
+/* Footer */
+.site-footer { border-top: 1px solid rgba(15,23,36,0.04); padding: 40px 0; color: rgba(15,23,36,0.85); font-size: 0.95rem; background: #ffffff; }
+.site-footer a { color: rgba(15,23,36,0.9); text-decoration: none; font-size: 0.95rem; }
+.site-footer a:hover { text-decoration: underline; }
+.site-footer .small { font-size: 0.95rem; color: rgba(15,23,36,0.75); }
+.site-footer strong { font-size: 1.05rem; }
+
+@media (max-width: 992px) {
+  .display-4 { font-size: 2.2rem; }
+  .left-panel { padding-right: 24px; }
+  .ref-card { max-width: 100%; margin-left: 0; }
+  .hero .container > .row { padding: 24px; }
+}
+
+@media (max-width: 768px) {
+  .service-card { min-width: 100%; }
+  .left-panel { padding-right: 0; }
+  .container { padding-left: 12px; padding-right: 12px; }
+  .display-4 { font-size: 1.8rem; }
+  .hero { padding-top: 40px; padding-bottom: 40px; }
+  .hero .container > .row { padding: 18px; }
+}
+
+@media (max-width: 576px) {
+  .site-footer { padding: 28px 0; font-size: 0.92rem; }
+  .site-footer .small { font-size: 0.92rem; }
 }
 
 .btn_login {
@@ -31,6 +145,9 @@ body {
 .navbar {
     background: linear-gradient(180deg, #071426 0%, #071a2b 60%) !important; /*Con esta linea de aqui se puede cambiar el color de la barra de arriba con #071426 0% se cambia el color de la mitad de la barra para arriba y con #071a2b 60% se cambia de la mitar para abajo*/
     border-bottom: 1px solid rgba(255,255,255,0.02);
+    /* Aumentar altura vertical del menú */
+    padding-top: 0.9rem;
+    padding-bottom: 0.9rem;
 }
 
 .navbar .container-fluid {
@@ -39,14 +156,19 @@ body {
 }
 
 .navbar-brand {
-  color:  !important;
+  color:#f8f8f8  !important;
   font-weight: 700;
+  font-size: 1.05rem;
+  padding-top: 0.15rem;
+  padding-bottom: 0.15rem;
 }
 
 .navbar .nav-link {
   color: rgba(255,255,255,0.85) !important; /*cambio de color del texto del menu de arriba*/
   margin: 0 0.6rem;
   font-size: 0.95rem;
+  padding-top: 0.35rem;
+  padding-bottom: 0.35rem;
 }
 
 .navbar .nav-link:hover {
@@ -64,7 +186,7 @@ body {
   background: transparent;
   color: rgba(255,255,255,0.95); /*cambio de color del texto del boton de login*/
   border: 1px solid rgba(255,255,255,0.12);
-  padding: 6px 14px;
+  padding: 8px 16px;
   border-radius: 20px;
   cursor: pointer;
 }
@@ -75,7 +197,7 @@ body {
 .btn_registro {
     background: linear-gradient(90deg, #4aa3ff, #1e66ff);
     color: #fff; /*cambio de color del texto del boton de registro*/
-    padding: 7px 18px;
+    padding: 8px 18px;
     border-radius: 26px;
     box-shadow: 0 6px 20px rgba(30,102,255,0.22);
     border: none;
@@ -87,6 +209,22 @@ body {
 }
 
 @media (max-width: 576px) {
-  .navbar .nav-link { display: none; }
   .btns { gap: 6px; }
+  .navbar-collapse .nav-link { padding: .5rem 1rem; }
 }
+
+.navbar-toggler {
+  border: none;
+}
+.navbar-toggler:focus { outline: none; box-shadow: none; }
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+.navbar-light .navbar-toggler { color: rgba(15,23,36,0.9); }
+.navbar-dark .navbar-toggler { color: rgba(255,255,255,0.95); }
+
+.navbar .navbar-toggler { color: rgba(255,255,255,0.95) !important; z-index: 2000; }
+.navbar-toggler-icon { background-size: 22px 22px; }
+
+.navbar-collapse.collapse.show .nav-link { display: block !important; }
