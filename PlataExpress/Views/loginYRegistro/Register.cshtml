@@ -1,4 +1,4 @@
-﻿@*
+@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 
@@ -7,6 +7,7 @@
 
 @{
     ViewData["Title"] = "Registrarse";
+    ViewData["HideHeaderFooter"] = true;
 }
 
 <div class="container mt-5">
@@ -64,7 +65,7 @@
                         <button type="submit" class="btn btn-primary w-100">Registrarme</button>
 
                         <div class="text-center mt-3">
-                            <a asp-controller="Account" asp-action="Login">¿Ya tienes cuenta? Inicia sesión</a>
+                            <a asp-controller="loginYRegistro" asp-action="Login">¿Ya tienes cuenta? Inicia sesión</a>
                         </div>
                     </form>
                 </div>
