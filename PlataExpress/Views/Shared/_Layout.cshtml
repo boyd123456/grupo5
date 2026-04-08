@@ -10,6 +10,28 @@
     <link rel="stylesheet" href="~/PlataExpress.styles.css" asp-append-version="true" />
 </head>
 <body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Plata Express</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark">¿Como Funcionamos?</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="">Destinos</a>
+                        </li>
+                    <div class="btns">
+                            <a class="btn_login" asp-controller="loginYRegistro" asp-action="Login">Iniciar sesión</a>
+                            <a class="btn_registro ms-2" asp-controller="loginYRegistro" asp-action="Register">Registrarse</a>
+
+                    </ul>
+                </div>
     @if (ViewData["HideHeaderFooter"] as bool? != true)
     {
         <header>
