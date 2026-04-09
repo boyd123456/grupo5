@@ -1,13 +1,147 @@
-﻿<h2>Enviar Dinero</h2>
+﻿@model PlataExpress.Models.Remesa
 
-<form>
-    <label>Destinatario</label>
-    <input type="text" class="form-control" />
+<style>
+	.card {
+		border-radius: 20px;
+	}
 
-    <label>Monto</label>
-    <input type="number" class="form-control" />
+	.shadow {
+		box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+	}
 
-    <br />
+	.btn {
+		border-radius: 30px;
+		font-weight: bold;
+		padding: 10px;
+	}
+	.btn-nav{
+		border-radius:25px;
+		padding:10px 20px;
+		font-weight:600;
+		transition:0.3s;
+	}
 
-    <button class="btn btn-primary">Enviar</button>
-</form>
+	.btn-nav:hover{
+		transform:translateY(-2px);
+		box-shadow:0 5px 15px rgba(0,0,0,0.15);
+	}
+
+	input, select {
+		border-radius: 10px;
+	}</style>
+
+<div class="container mt-4">
+
+	<h2 class="mb-4">💸 Enviar dinero</h2>
+
+	<div class="row">
+
+		<div class="col-md-7">
+
+			<div class="card shadow p-4">
+
+				<h4>Datos del envío</h4>
+
+				<form method="post">
+
+					<div class="mb-3">
+						<label>Tipo de operación</label>
+						<select class="form-control" asp-for="TipoOperacion">
+							<option>Transferencia</option>
+							<option>Depósito</option>
+						</select>
+					</div>
+
+					<div class="mb-3">
+						<label>Nombre del destinatario</label>
+						<input type="text" class="form-control" asp-for="Nombre" />
+					</div>
+
+					<div class="mb-3">
+						<label>Agencia o país destino</label>
+						<input type="text" class="form-control" asp-for="Agencia" />
+					</div>
+
+					<div class="mb-3">
+						<label>Monto a enviar</label>
+						<input type="number" class="form-control" asp-for="Monto" />
+					</div>
+
+					<div class="mb-3">
+						<label>Comisión</label>
+						<input type="number" class="form-control" asp-for="Comision" />
+					</div>
+						<button class="btn btn-primary w-100"
+								onclick="return confirmarEnvio()">
+							Enviar dinero
+						</button>
+						<div class="mt-4 d-flex justify-content-between">
+
+							<a asp-controller="Usuario" asp-action="PanelUsuario"
+								   class="btn btn-outline-secondary btn-nav">
+
+								⬅ Volver al Panel
+
+							</a>
+
+							<a asp-controller="Usuario" asp-action="MisEnvios"
+								   class="btn btn-outline-primary btn-nav">
+
+								📄 Ver mis envíos
+
+							</a>
+
+						</div>
+
+				</form>
+
+			</div>
+
+		</div>
+
+		<div class="col-md-5">
+
+			<div class="card shadow p-4 mb-3">
+
+				<h4>Resumen del envío</h4>
+
+				<p><strong>Tipo de cambio:</strong> 1 USD = S/ 3.77</p>
+
+				<p><strong>Comisión:</strong> 5%</p>
+
+				<p><strong>Tiempo estimado:</strong> 10 minutos</p>
+
+				<hr>
+
+				<p class="text-success">
+					✔ Transferencias seguras
+				</p>
+
+				<p class="text-success">
+					✔ Operaciones protegidas
+				</p>
+
+				<p class="text-success">
+					✔ Plataforma confiable
+				</p>
+
+			</div>
+
+
+			<div class="alert alert-info">
+
+				ℹ️ Recuerda verificar bien los datos del destinatario antes de confirmar el envío.
+
+			</div>
+
+		</div>
+
+	</div>
+
+</div>
+
+	<script>
+		function confirmarEnvio() {
+			return confirm("¿Estás seguro de que deseas realizar este envío?");
+		}
+	</script>

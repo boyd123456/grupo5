@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using PlataExpress.Models;
 
 namespace PlataExpress.Controllers
 {
@@ -12,14 +13,30 @@ namespace PlataExpress.Controllers
             return View(model);
         }
 
+        [HttpGet]
         public IActionResult EnviarDinero()
         {
             return View();
         }
 
+        [HttpPost]
+        public IActionResult EnviarDinero(Remesa remesa)
+        {
+            remesa.FechaEnvio = DateTime.Now;
+            remesa.Estado = "En proceso";
+
+            anotacionBaseDeDatos.Remesas.Add(remesa);
+
+            TempData["mensaje"] = "¡Tu envío se realizó con éxito!";
+
+            return RedirectToAction("MisEnvios");
+        }
+
         public IActionResult MisEnvios()
         {
-            return View();
+            var lista = anotacionBaseDeDatos.Remesas;
+
+            return View(lista);
         }
 
         public IActionResult EstadoOperacion()

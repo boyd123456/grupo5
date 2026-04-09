@@ -1,9 +1,106 @@
-﻿<h2>Mis Envíos</h2>
+﻿@if (TempData["mensaje"] != null)
+{
+    <div class="alert alert-success text-center">
+        @TempData["mensaje"]
+    </div>
+}
+<style>
+    .table {
+        border-radius: 10px;
+        overflow: hidden;
+    }
 
-<table class="table">
-    <tr>
-        <th>Destinatario</th>
-        <th>Monto</th>
-        <th>Fecha</th>
-    </tr>
-</table>
+    .btn {
+        border-radius: 25px;
+        padding: 10px 20px;
+        font-weight: bold;
+    }
+
+    .badge {
+        font-size: 14px;
+        padding: 8px 12px;
+    }</style>
+@model List<PlataExpress.Models.Remesa>
+
+<div class="container mt-5 mb-5">
+
+    <h2 class="mb-3">📄 Mis Envíos</h2>
+
+    <p class="text-muted">
+        Aquí puedes consultar el historial de todas tus transferencias realizadas.
+    </p>
+
+
+    @if (Model.Count == 0)
+    {
+        <div class="alert alert-info">
+            Aún no tienes envíos registrados.
+        </div>
+    }
+
+
+    <table class="table table-bordered shadow">
+
+        <thead class="table-dark">
+            <tr>
+                <th>Destinatario</th>
+                <th>Agencia / País</th>
+                <th>Monto</th>
+                <th>Comisión</th>
+                <th>Fecha</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    <td>@item.Nombre</td>
+                    <td>@item.Agencia</td>
+                    <td>S/ @item.Monto</td>
+                    <td>S/ @item.Comision</td>
+                    <td>@item.FechaEnvio</td>
+
+                    <td>
+
+                        @if (item.Estado == "En proceso")
+                        {
+                            <span class="badge bg-warning">En proceso</span>
+                        }
+                        else
+                        {
+                            <span class="badge bg-success">Completado</span>
+                        }
+
+                    </td>
+
+                </tr>
+            }
+
+        </tbody>
+
+    </table>
+
+    <div class="mt-4 d-flex gap-3">
+
+        <a asp-controller="Usuario" asp-action="PanelUsuario"
+               class="btn btn-secondary">
+
+            ⬅ Volver al Panel
+
+        </a>
+
+
+        <a asp-controller="Usuario" asp-action="EnviarDinero"
+               class="btn btn-primary">
+
+            💸 Nueva Transacción
+
+        </a>
+
+    </div>
+
+</div>

@@ -2,7 +2,32 @@
 {
     public class anotacionBaseDeDatos
     {
+        public static List<Remesa> Remesas = new List<Remesa>()
+        {
+            new Remesa
+            {
+                IdRemesa = 1,
+                TipoOperacion = "Envío",
+                Nombre = "Juan Perez",
+                Agencia = "Lima Centro",
+                Monto = 200,
+                Comision = 10,
+                FechaEnvio = DateTime.Now,
+                Estado = "En proceso"
+            },
 
+            new Remesa
+            {
+                IdRemesa = 2,
+                TipoOperacion = "Envío",
+                Nombre = "Maria Lopez",
+                Agencia = "San Isidro",
+                Monto = 350,
+                Comision = 15,
+                FechaEnvio = DateTime.Now,
+                Estado = "Completado"
+            }
+        };
 
         /*CREATE TABLE [dbo].[Usuarios]
 (
