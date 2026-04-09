@@ -1,0 +1,94 @@
+@{
+    ViewData["Title"] = "¿Cómo Funcionamos?";
+}
+
+<div class="how-it-works-page py-5 mt-4">
+    <!-- Hero Section -->
+    <div class="container mb-5 text-center">
+        <span class="badge bg-primary bg-opacity-10 text-primary mb-3 px-3 py-2 rounded-pill fw-semibold">Operaciones Financieras Seguras</span>
+        <h1 class="display-4 fw-bold text-dark mb-3" style="letter-spacing: -1px;">Envíos internacionales en <span class="text-primary">3 simples pasos</span></h1>
+        <p class="lead text-muted mx-auto" style="max-width: 600px;">
+            Descubre lo fácil y rápido que es enviar dinero al exterior desde cualquier caja o agente autorizado en Perú con Plata Express.
+        </p>
+    </div>
+
+    <!-- Steps Timeline / Cards -->
+    <div class="container position-relative py-5">
+        <!-- Connecting Line for larger screens -->
+        <div class="d-none d-lg-block position-absolute" style="top: 35%; left: 15%; right: 15%; height: 4px; background: linear-gradient(90deg, #3b82f6 0%, #1e3a8a 100%); z-index: 0; border-radius: 2px; opacity: 0.15;"></div>
+        
+        <div class="row g-4 position-relative" style="z-index: 1;">
+            <!-- Step 1 -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100 border-0 shadow-sm step-card" style="border-radius: 24px; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                    <div class="card-body text-center p-5">
+                        <div class="icon-circle mx-auto mb-4 bg-primary text-white d-flex align-items-center justify-content-center shadow-sm" style="width: 80px; height: 80px; border-radius: 20px; font-size: 2rem; transform: rotate(-5deg);">
+                            <i class="bi bi-person-vcard"></i>
+                        </div>
+                        <h3 class="h4 fw-bold mb-3">1. Regístrate e Inicia Sesión</h3>
+                        <p class="text-muted">Crea una cuenta gratuita en nuestra plataforma web. Ingresa tus datos y accede de inmediato para gestionar tus operaciones.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card h-100 border-0 shadow-sm step-card" style="border-radius: 24px; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                    <div class="card-body text-center p-5">
+                        <div class="icon-circle mx-auto mb-4 text-white d-flex align-items-center justify-content-center shadow-sm" style="width: 80px; height: 80px; border-radius: 20px; font-size: 2rem; background: linear-gradient(135deg, #f97316, #ea580c); transform: rotate(5deg);">
+                            <i class="bi bi-calculator"></i>
+                        </div>
+                        <h3 class="h4 fw-bold mb-3">2. Cotiza y Deposita</h3>
+                        <p class="text-muted">Calcula el monto de tu envío usando nuestras bajas tasas. Luego, realiza el depósito en cualquier caja o agente local en el Perú.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="col-lg-4 col-md-6 mb-4 mx-auto">
+                <div class="card h-100 border-0 shadow-sm step-card" style="border-radius: 24px; transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                    <div class="card-body text-center p-5">
+                        <div class="icon-circle mx-auto mb-4 bg-success text-white d-flex align-items-center justify-content-center shadow-sm" style="width: 80px; height: 80px; border-radius: 20px; font-size: 2rem; transform: rotate(-5deg);">
+                            <i class="bi bi-send-check"></i>
+                        </div>
+                        <h3 class="h4 fw-bold mb-3">3. Verificación y Envío</h3>
+                        <p class="text-muted">Validamos tu depósito y transferimos el dinero al país de destino. Cien por ciento seguro, rápido y sin más complicaciones.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Call to Action -->
+    <div class="container mt-4 text-center mb-5">
+        <div class="p-5 shadow position-relative overflow-hidden" style="background: linear-gradient(135deg, #0f172a, #1e3a8a); color: white; border-radius: 30px;">
+            <div class="position-absolute" style="top: -50px; right: -50px; width: 200px; height: 200px; background: rgba(255,255,255,0.05); border-radius: 50%;"></div>
+            <div class="position-absolute" style="bottom: -50px; left: -50px; width: 150px; height: 150px; background: rgba(255,255,255,0.05); border-radius: 50%;"></div>
+            
+            <div class="position-relative z-index-1">
+                <h2 class="fw-bold mb-3 display-6">¿Listo para enviar dinero?</h2>
+                <p class="mb-4 opacity-75 lead" style="max-width: 600px; margin: 0 auto;">Miles de peruanos ya confían en nosotros para conectar con sus familias en el exterior de manera segura.</p>
+                <a asp-controller="loginYRegistro" asp-action="Register" class="btn btn-light btn-lg px-5 py-3 fw-bold text-primary shadow-sm mt-2" style="border-radius: 50px; transition: transform 0.2s">
+                    Únete a Plata Express Ahora <i class="bi bi-arrow-right ms-2"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .step-card {
+        border: 1px solid rgba(0,0,0,0.03) !important;
+    }
+    .step-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 1.5rem 3rem rgba(0,0,0,.1) !important;
+        border-color: rgba(0,0,0,0.05) !important;
+    }
+    .icon-circle {
+        transition: transform 0.3s ease;
+    }
+    .step-card:hover .icon-circle {
+        transform: rotate(0deg) scale(1.1) !important;
+    }
+</style>

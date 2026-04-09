@@ -1,0 +1,94 @@
+@model PlataExpress.Models.LoginViewModel
+
+@{
+    ViewData["Title"] = "Iniciar Sesión";
+    ViewData["HideHeaderFooter"] = true;
+}
+
+<div class="login-wrapper">
+    <div class="login-split-container">
+        <div class="login-left">
+            <h1 class="left-title">¡Qué bueno verte<br />de nuevo!</h1>
+            <p class="left-subtitle">
+                Accede a tu cuenta de Plata Express para continuar gestionando tus operaciones y envíos internacionales de la forma más rápida y segura.
+            </p>
+            
+        </div>
+
+        <div class="login-right">
+            <h2 class="right-title">Iniciar sesión</h2>
+
+            @if (TempData["Mensaje"] != null)
+            {
+                <div class="login-alert success">
+                    @TempData["Mensaje"]
+                </div>
+            }
+
+            @if (ViewBag.Error != null)
+            {
+                <div class="login-alert error">
+                    @ViewBag.Error
+                </div>
+            }
+
+            <form asp-action="Login" method="post" class="split-form">
+
+                <div class="login-group">
+                    <label>Nombre de Usuario</label>
+                    <input asp-for="NombreDeUsuario" placeholder="Ingresa tu usuario o correo electrónico" />
+                    <span asp-validation-for="NombreDeUsuario" class="error-text"></span>
+                </div>
+
+                <div class="login-group">
+                    <label>Contraseña</label>
+                    <div class="password-wrapper position-relative">
+                        <input asp-for="ClaveDeUsuario" type="password" placeholder="Ingresa tu contraseña" id="loginPassword" />
+                        <i class="bi bi-eye-slash toggle-password" onclick="togglePassword('loginPassword', this)"></i>
+                    </div>
+                    <span asp-validation-for="ClaveDeUsuario" class="error-text"></span>
+                </div>
+
+                <div class="form-check remember-me">
+                    <input class="form-check-input" type="checkbox" id="rememberMe">
+                    <label class="form-check-label text-muted" for="rememberMe">
+                        Recuérdame
+                    </label>
+                </div>
+
+                <button type="submit" class="login-btn">Ingresar ahora</button>
+
+                <div class="login-footer">
+                    <a href="#">¿Olvidaste tu contraseña?</a>
+                    <a class="register-link" asp-controller="loginYRegistro" asp-action="Register">Registrarme</a>
+                </div>
+
+
+                <div class="login-terms">
+                    Al hacer clic en "Ingresar ahora", aceptas nuestros <br />
+                    <a href="#">Términos de Servicio</a> |<a asp-area="" asp-controller="Home" asp-action="Privacy" target="_blank">Privacy</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        function togglePassword(inputId, icon) {
+            const input = document.getElementById(inputId);
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.classList.remove('bi-eye-slash');
+                icon.classList.add('bi-eye');
+            } else {
+                input.type = 'password';
+                icon.classList.remove('bi-eye');
+                icon.classList.add('bi-eye-slash');
+            }
+        }
+    </script>
+}
