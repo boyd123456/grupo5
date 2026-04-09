@@ -22,5 +22,30 @@ namespace PlataExpress.Controllers
         {
             return View(new List<Remesa>());
         }
+
+        public IActionResult Pendientes()
+        {
+            return View(new List<Remesa>());
+        }
+
+        public IActionResult Realizados()
+        {
+            return View(new List<Remesa>());
+        }
+
+        public IActionResult Capital()
+        {
+            return View();
+        }
+
+        public IActionResult Reportes()
+        {
+            return View();
+        }
+
+        public IActionResult Configuracion()
+        {
+            return View();
+        }
     }
 }
