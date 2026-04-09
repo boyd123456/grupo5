@@ -1,9 +1,13 @@
+<<<<<<< HEAD
 
 
 using PlataExpress.Data;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddScoped<loginyRegisterRepositori>();
 
+=======
+var builder = WebApplication.CreateBuilder(args);
+>>>>>>> 90e015fbae5f307c3b32c15e8ac073d63bd4ff2a
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

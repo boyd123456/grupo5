@@ -1,25 +1,34 @@
 @model PlataExpress.Models.LoginViewModel   
-@{
-    ViewData["Title"] = "Panel de Usuario";
-}
+
+<style>
+    .card {
+        border-radius: 20px;
+        transition: 0.3s;
+    }
+
+    .page-container {
+        margin-bottom: 100px;
+    }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+    .btn {
+        border-radius: 30px;
+        padding: 10px 20px;
+        font-weight: bold;
+    }</style>
+
+    @{
+    }
 <h2>Bienvenido  @Model.NombreDeUsuario</h2>
 
-<div class="container">
 
-    <a class="btn btn-primary" asp-controller="Usuario" asp-action="EnviarDinero">
-        Enviar dinero
-    </a>
 
-    <br /><br />
 
-    <a class="btn btn-success" asp-controller="Usuario" asp-action="MisEnvios">
-        Ver mis envíos
-    </a>
 
-    <br /><br />
 
-    <a class="btn btn-warning" asp-controller="Usuario" asp-action="EstadoOperacion">
-        Estado de operaciones
-    </a>
 
-</div>
+    </div>

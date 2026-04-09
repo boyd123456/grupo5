@@ -7,7 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+<<<<<<< HEAD
     <PackageReference Include="Microsoft.Data.SqlClient" Version="5.2.1" />
+=======
+    <Folder Include="Data\" />
+>>>>>>> 90e015fbae5f307c3b32c15e8ac073d63bd4ff2a
   </ItemGroup>
 
 </Project>
