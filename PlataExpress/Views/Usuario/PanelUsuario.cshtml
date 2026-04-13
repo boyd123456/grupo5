@@ -1,5 +1,10 @@
 @model PlataExpress.Models.LoginViewModel   
-
+@if (TempData["mensaje"] != null)
+{
+    <div class="alert alert-success text-center">
+        @TempData["mensaje"]
+    </div>
+}
 <style>
     .card {
         border-radius: 20px;
@@ -19,16 +24,125 @@
         border-radius: 30px;
         padding: 10px 20px;
         font-weight: bold;
-    }</style>
-
-    @{
     }
-<h2>Bienvenido  @Model.NombreDeUsuario</h2>
+    </style>
+    @{
+        ViewData["Title"] = "Panel de Usuario";
+        var usuario = Context.Session.GetString("usuario");
+    }
+
+    <div class="container mt-4">
+
+        <div class="p-4 mb-4 bg-light rounded shadow-sm">
+            <h2>👋 Bienvenido @Model.NombreDeUsuario</h2>
+            <p>Desde aquí puedes gestionar tus envíos internacionales de forma rápida y segura.</p>
+        </div>
 
 
+        <div class="row text-center mb-4">
+
+            <div class="col-md-4">
+                <div class="card shadow p-3">
+                    <h3>5</h3>
+                    <p>Envíos realizados</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card shadow p-3">
+                    <h3>$1,200</h3>
+                    <p>Total enviado</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card shadow p-3">
+                    <h3>3</h3>
+                    <p>Operaciones en proceso</p>
+                </div>
+            </div>
+
+        </div>
 
 
+        <!-- ACCIONES -->
+        <h4 class="mb-3">Operaciones</h4>
+
+        <div class="row mb-5">
+
+            <div class="col-md-4">
+                <div class="card shadow-lg p-4 text-center">
+
+                    <h4>💸 Enviar Dinero</h4>
+                    <p>Realiza un nuevo envío internacional.</p>
+
+                    <a asp-controller="Usuario" asp-action="EnviarDinero"
+                       class="btn btn-primary">Enviar dinero</a>
+
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card shadow-lg p-4 text-center">
+
+                    <h4>📄 Mis Envíos</h4>
+                    <p>Consulta el historial de tus envíos.</p>
+
+                    <a asp-controller="Usuario" asp-action="MisEnvios"
+                       class="btn btn-success">Ver envíos</a>
+
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card shadow-lg p-4 text-center">
+
+                    <h4>🔎 Estado</h4>
+                    <p>Revisa el estado de tus operaciones.</p>
+
+                    <a asp-controller="Usuario" asp-action="EstadoOperacion"
+                       class="btn btn-warning">Consultar</a>
+
+                </div>
+            </div>
+
+        </div>
 
 
+        <!-- ULTIMOS ENVIOS -->
+        <h4 class="mb-3">Últimos envíos</h4>
+
+        <table class="table table-bordered shadow">
+
+            <tr>
+                <th>Destinatario</th>
+                <th>País</th>
+                <th>Monto</th>
+                <th>Estado</th>
+            </tr>
+
+            <tr>
+                <td>Juan Pérez</td>
+                <td>USA</td>
+                <td>$200</td>
+                <td><span class="badge bg-warning">En proceso</span></td>
+            </tr>
+
+            <tr>
+                <td>Maria Lopez</td>
+                <td>España</td>
+                <td>$150</td>
+                <td><span class="badge bg-success">Completado</span></td>
+            </tr>
+
+        </table>
+
+
+        <!-- INFORMACION -->
+        <div class="alert alert-info mt-4">
+
+            💡 <strong>Consejo:</strong> Mantén tus datos actualizados para evitar retrasos en tus envíos internacionales.
+
+        </div>
 
     </div>

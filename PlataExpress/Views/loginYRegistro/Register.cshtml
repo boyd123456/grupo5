@@ -1,10 +1,4 @@
-@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-
-
 @model PlataExpress.Models.RegisterUsuarios
-
 @{
     ViewData["Title"] = "Registrarse";
     ViewData["HideHeaderFooter"] = true;
@@ -15,21 +9,21 @@
         <div class="register-form">
             <h2 class="right-title">Crear Cuenta</h2>
 
-            <form asp-action="Register" method="post" class="split-form">
+            <form asp-action="Register" method="post" class="split-form" id="registerForm">
                 <div asp-validation-summary="ModelOnly" class="login-alert error mb-3"></div>
 
                 <div class="row">
                     <div class="col-md-6">
                         <div class="login-group">
                             <label asp-for="Nombres"></label>
-                            <input asp-for="Nombres" placeholder="Tus nombres" />
+                            <input asp-for="Nombres" placeholder="Tus nombres" id="Nombres" />
                             <span asp-validation-for="Nombres" class="error-text"></span>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="login-group">
                             <label asp-for="Apellidos"></label>
-                            <input asp-for="Apellidos" placeholder="Tus apellidos" />
+                            <input asp-for="Apellidos" placeholder="Tus apellidos" id="Apellidos" />
                             <span asp-validation-for="Apellidos" class="error-text"></span>
                         </div>
                     </div>
@@ -39,14 +33,24 @@
                     <div class="col-md-6">
                         <div class="login-group">
                             <label asp-for="DNI"></label>
-                            <input asp-for="DNI" placeholder="Documento de identidad" />
+                            <input asp-for="DNI" placeholder="Documento de identidad" id="DNI" />
                             <span asp-validation-for="DNI" class="error-text"></span>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="login-group">
                             <label asp-for="Telefono"></label>
-                            <input asp-for="Telefono" placeholder="Tu número" />
+                            <div class="d-flex gap-2">
+                                <select id="PaisPrefijo" class="form-select" style="width: 95px; font-size: 13px; border: 1px solid #e2e8f0; border-radius: 8px; padding-right: 25px;">
+                                    <option value="51" selected>🇵🇪 +51</option>
+                                    <option value="34">🇪🇸 +34</option>
+                                    <option value="1">🇺🇸 +1</option>
+                                    <option value="57">🇨🇴 +57</option>
+                                    <option value="54">🇦🇷 +54</option>
+                                    <option value="56">🇨🇱 +56</option>
+                                </select>
+                                <input asp-for="Telefono" placeholder="Tu número" id="Telefono" class="flex-grow-1" maxlength="15" style="min-width: 0;" data-val="false" />
+                            </div>
                             <span asp-validation-for="Telefono" class="error-text"></span>
                         </div>
                     </div>
@@ -54,7 +58,7 @@
 
                 <div class="login-group">
                     <label asp-for="Correo"></label>
-                    <input asp-for="Correo" type="email" placeholder="tucorreo@ejemplo.com" />
+                    <input asp-for="Correo" type="email" placeholder="tucorreo@ejemplo.com" id="Correo" />
                     <span asp-validation-for="Correo" class="error-text"></span>
                 </div>
 
@@ -62,7 +66,7 @@
                     <div class="col-md-6">
                         <div class="login-group">
                             <label asp-for="Usuario"></label>
-                            <input asp-for="Usuario" placeholder="Nombre de usuario" />
+                            <input asp-for="Usuario" placeholder="Nombre de usuario" id="Usuario" />
                             <span asp-validation-for="Usuario" class="error-text"></span>
                         </div>
                     </div>
@@ -97,7 +101,6 @@
             </form>
         </div>
 
-        <!-- Right Side: Branding/Information -->
         <div class="register-info">
             <h1 class="left-title">Únete a<br />Plata Express</h1>
             <p class="left-subtitle">
@@ -114,11 +117,11 @@
     <script>
         function togglePassword(inputId, icon) {
             const input = document.getElementById(inputId);
-            if (input.type === 'password') {
+            if (input && input.type === 'password') {
                 input.type = 'text';
                 icon.classList.remove('bi-eye-slash');
                 icon.classList.add('bi-eye');
-            } else {
+            } else if (input) {
                 input.type = 'password';
                 icon.classList.remove('bi-eye');
                 icon.classList.add('bi-eye-slash');
@@ -126,15 +129,182 @@
         }
 
         document.addEventListener('DOMContentLoaded', function() {
+            const registerForm = document.getElementById('registerForm');
             const pwdInput = document.getElementById('registerPassword');
             const container = document.getElementById('strengthContainer');
-            const text = document.getElementById('strengthText');
+            const strengthText = document.getElementById('strengthText');
             const bars = [
                 document.getElementById('bar1'),
                 document.getElementById('bar2'),
                 document.getElementById('bar3'),
                 document.getElementById('bar4')
             ];
+
+            const showError = (id, message) => {
+                const input = document.getElementById(id);
+                if (input) {
+                    const errorSpan = input.closest('.login-group').querySelector('.error-text');
+                    if (errorSpan) errorSpan.textContent = message;
+                }
+            };
+
+            const clearError = (id) => {
+                const input = document.getElementById(id);
+                if (input) {
+                    const errorSpan = input.closest('.login-group').querySelector('.error-text');
+                    if (errorSpan) errorSpan.textContent = '';
+                }
+            };
+
+            const setupFilter = (id, regex, message) => {
+                const input = document.getElementById(id);
+                if (input) {
+                    input.addEventListener('input', function() {
+                        const originalValue = this.value;
+                        const cleanedValue = this.value.replace(regex, '');
+                        
+                        if (originalValue !== cleanedValue) {
+                            this.value = cleanedValue;
+                            showError(id, message);
+                            setTimeout(() => clearError(id), 2000);
+                        }
+                    });
+                }
+            };
+
+            setupFilter('Nombres', /[0-9]/g, "Los nombres no pueden contener números.");
+            setupFilter('Apellidos', /[0-9]/g, "Los apellidos no pueden contener números.");
+            setupFilter('Usuario', /\s/g, "El usuario no puede contener espacios.");
+            setupFilter('registerPassword', /\s/g, "La contraseña no puede contener espacios.");
+            
+            const setupNumericFilter = (id, maxLength, message) => {
+                const input = document.getElementById(id);
+                if (input) {
+                    input.addEventListener('input', function() {
+                        const originalValue = this.value;
+                        let cleanedValue = this.value.replace(/[^0-9]/g, '');
+                        if (cleanedValue.length > maxLength) {
+                            cleanedValue = cleanedValue.substring(0, maxLength);
+                        }
+                        if (originalValue !== cleanedValue) {
+                            this.value = cleanedValue;
+                            showError(id, message);
+                            setTimeout(() => clearError(id), 2000);
+                        }
+                    });
+                }
+            };
+
+            setupNumericFilter('DNI', 8, "El DNI solo permite 8 números.");
+
+            const phoneMasks = {
+                '51': { pattern: [3, 3, 3], length: 9 },
+                '56': { pattern: [1, 4, 4], length: 9 },
+                '34': { pattern: [3, 2, 2, 2], length: 9 },
+                '1': { pattern: [3, 3, 4], length: 10 },
+                '57': { pattern: [3, 3, 4], length: 10 },
+                '54': { pattern: [2, 4, 4], length: 10 }
+            };
+
+            const setupPhoneFormatter = (id, selectId) => {
+                const input = document.getElementById(id);
+                const select = document.getElementById(selectId);
+                if (!input || !select) return;
+                const applyFormat = () => {
+                    const country = select.value;
+                    const config = phoneMasks[country] || { pattern: [3, 3, 3], length: 9 };
+                    let val = input.value.replace(/\D/g, '');
+                    if (val.length > config.length) {
+                        val = val.substring(0, config.length);
+                    }
+                    let formatted = '';
+                    let charCount = 0;
+                    for (let i = 0; i < config.pattern.length && charCount < val.length; i++) {
+                        const chunk = val.substring(charCount, charCount + config.pattern[i]);
+                        if (chunk) {
+                            formatted += (formatted ? ' ' : '') + chunk;
+                            charCount += config.pattern[i];
+                        }
+                    }
+                    input.value = formatted;
+                };
+                input.addEventListener('input', applyFormat);
+                select.addEventListener('change', () => {
+                    input.value = '';
+                    input.focus();
+                });
+            };
+
+            setupPhoneFormatter('Telefono', 'PaisPrefijo');
+
+            const setupBlurValidation = (id, condition, message) => {
+                const input = document.getElementById(id);
+                if (input) {
+                    input.addEventListener('blur', function() {
+                        if (condition(this.value)) {
+                            showError(id, message);
+                        } else {
+                            clearError(id);
+                        }
+                    });
+                }
+            };
+
+            const setupPhoneBlur = (id) => {
+                const input = document.getElementById(id);
+                if (input) {
+                    input.addEventListener('blur', function() {
+                        const country = document.getElementById('PaisPrefijo').value;
+                        const reqLen = phoneMasks[country].length;
+                        const pure = this.value.replace(/\s/g, '');
+                        if (pure.length > 0 && pure.length !== reqLen) {
+                            showError(id, "El teléfono debe tener " + reqLen + " dígitos.");
+                        } else {
+                            clearError(id);
+                        }
+                    });
+                }
+            };
+
+            setupBlurValidation('DNI', val => val.length > 0 && !/^\d{8}$/.test(val), "El DNI debe tener 8 dígitos.");
+            setupBlurValidation('Correo', val => val.length > 0 && !/^[^\s@@]+@@[^\s@@]+\.[a-zA-Z]{2,}$/.test(val), "Incluir extensión (ej: .com, .pe).");
+            setupPhoneBlur('Telefono');
+
+            if (registerForm) {
+                registerForm.addEventListener('submit', function(e) {
+                    let hasError = false;
+                    const check = (id, condition, message) => {
+                        const input = document.getElementById(id);
+                        if (input && condition(input.value)) {
+                            showError(id, message);
+                            if (!hasError) input.focus();
+                            hasError = true;
+                        }
+                    };
+
+                    check('Nombres', val => val.length === 0 || /[0-9]/.test(val), "Campo requerido.");
+                    check('Apellidos', val => val.length === 0 || /[0-9]/.test(val), "Campo requerido.");
+                    check('DNI', val => !/^\d{8}$/.test(val), "DNI inválido.");
+                    
+                    const country = document.getElementById('PaisPrefijo').value;
+                    const reqLen = phoneMasks[country].length;
+                    const telVal = document.getElementById('Telefono').value.replace(/\s/g, '');
+                    if (telVal.length !== reqLen) {
+                        showError('Telefono', "Se requieren " + reqLen + " dígitos.");
+                        hasError = true;
+                    }
+
+                    check('Correo', val => !/^[^\s@@]+@@[^\s@@]+\.[a-zA-Z]{2,}$/.test(val), "Correo inválido.");
+                    check('Usuario', val => val.length < 4 || /\s/.test(val), "Usuario inválido.");
+                    check('registerPassword', val => val.length < 6 || /\s/.test(val), "Contraseña inválida.");
+
+                    if (hasError) {
+                        e.preventDefault();
+                    } else {
+                        document.getElementById('Telefono').value = telVal;
+                    }
+                });
+            }
 
             if (pwdInput) {
                 pwdInput.addEventListener('input', function() {
@@ -153,27 +323,26 @@
                     if (/[0-9]/.test(val)) score += 1;
                     if (/[^A-Za-z0-9]/.test(val)) score += 1;
 
-                    // Reset classes
                     bars.forEach(b => b.className = 'strength-bar');
 
                     if (score <= 2) {
-                        text.textContent = 'Contraseña débil';
-                        text.style.color = '#ef4444';
+                        strengthText.textContent = 'Contraseña débil';
+                        strengthText.style.color = '#ef4444';
                         bars[0].classList.add('strength-weak');
                     } else if (score === 3) {
-                        text.textContent = 'Contraseña aceptable';
-                        text.style.color = '#f59e0b';
+                        strengthText.textContent = 'Contraseña aceptable';
+                        strengthText.style.color = '#f59e0b';
                         bars[0].classList.add('strength-fair');
                         bars[1].classList.add('strength-fair');
                     } else if (score === 4) {
-                        text.textContent = 'Contraseña buena';
-                        text.style.color = '#3b82f6';
+                        strengthText.textContent = 'Contraseña buena';
+                        strengthText.style.color = '#3b82f6';
                         bars[0].classList.add('strength-good');
                         bars[1].classList.add('strength-good');
                         bars[2].classList.add('strength-good');
                     } else {
-                        text.textContent = 'Contraseña fuerte';
-                        text.style.color = '#10b981';
+                        strengthText.textContent = 'Contraseña fuerte';
+                        strengthText.style.color = '#10b981';
                         bars.forEach(b => b.classList.add('strength-strong'));
                     }
                 });

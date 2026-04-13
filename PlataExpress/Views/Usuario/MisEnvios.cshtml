@@ -1,15 +1,5 @@
-<<<<<<< HEAD
-﻿<h2>Mis Envíos</h2>
-
-<table class="table">
-    <tr>
-        <th>Destinatario</th>
-        <th>Monto</th>
-        <th>Fecha</th>
-    </tr>
-</table>
-=======
-﻿@if (TempData["mensaje"] != null)
+@model List<PlataExpress.Models.Remesa>
+@if (TempData["mensaje"] != null)
 {
     <div class="alert alert-success text-center">
         @TempData["mensaje"]
@@ -31,7 +21,7 @@
         font-size: 14px;
         padding: 8px 12px;
     }</style>
-@model List<PlataExpress.Models.Remesa>
+
 
 <div class="container mt-5 mb-5">
 
@@ -115,4 +105,4 @@
     </div>
 
 </div>
->>>>>>> 90e015fbae5f307c3b32c15e8ac073d63bd4ff2a
+

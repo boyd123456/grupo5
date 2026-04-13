@@ -2,8 +2,7 @@
 {
     public class anotacionBaseDeDatos
     {
-<<<<<<< HEAD
-=======
+
         public static List<Remesa> Remesas = new List<Remesa>()
         {
             new Remesa
@@ -35,6 +34,7 @@
 (
 	[IdUsuario] INT NOT NULL PRIMARY KEY IDENTITY, 
     [Nombres] VARCHAR(100) NOT NULL, 
+    [Apellidos] VARCHAR(100) NOT NULL,
     [Correo] VARCHAR(100) NOT NULL, 
     [Usuario] VARCHAR(100) NOT NULL, 
     [Clave] VARCHAR(100) NOT NULL, 
@@ -57,6 +57,6 @@
 },
 )
 */
->>>>>>> 90e015fbae5f307c3b32c15e8ac073d63bd4ff2a
+
     }
 }

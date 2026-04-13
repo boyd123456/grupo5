@@ -3,22 +3,17 @@
 }
 
 <div class="how-it-works-page py-5 mt-4">
-    <!-- Hero Section -->
     <div class="container mb-5 text-center">
-        <span class="badge bg-primary bg-opacity-10 text-primary mb-3 px-3 py-2 rounded-pill fw-semibold">Operaciones Financieras Seguras</span>
         <h1 class="display-4 fw-bold text-dark mb-3" style="letter-spacing: -1px;">Envíos internacionales en <span class="text-primary">3 simples pasos</span></h1>
         <p class="lead text-muted mx-auto" style="max-width: 600px;">
             Descubre lo fácil y rápido que es enviar dinero al exterior desde cualquier caja o agente autorizado en Perú con Plata Express.
         </p>
     </div>
 
-    <!-- Steps Timeline / Cards -->
     <div class="container position-relative py-5">
-        <!-- Connecting Line for larger screens -->
         <div class="d-none d-lg-block position-absolute" style="top: 35%; left: 15%; right: 15%; height: 4px; background: linear-gradient(90deg, #3b82f6 0%, #1e3a8a 100%); z-index: 0; border-radius: 2px; opacity: 0.15;"></div>
         
         <div class="row g-4 position-relative" style="z-index: 1;">
-            <!-- Step 1 -->
             <div class="col-lg-4 col-md-6 mb-4">
                 <div class="card h-100 border-0 shadow-sm step-card" style="border-radius: 24px; transition: transform 0.3s ease, box-shadow 0.3s ease;">
                     <div class="card-body text-center p-5">
@@ -31,7 +26,6 @@
                 </div>
             </div>
 
-            <!-- Step 2 -->
             <div class="col-lg-4 col-md-6 mb-4">
                 <div class="card h-100 border-0 shadow-sm step-card" style="border-radius: 24px; transition: transform 0.3s ease, box-shadow 0.3s ease;">
                     <div class="card-body text-center p-5">
@@ -44,7 +38,6 @@
                 </div>
             </div>
 
-            <!-- Step 3 -->
             <div class="col-lg-4 col-md-6 mb-4 mx-auto">
                 <div class="card h-100 border-0 shadow-sm step-card" style="border-radius: 24px; transition: transform 0.3s ease, box-shadow 0.3s ease;">
                     <div class="card-body text-center p-5">
@@ -59,7 +52,6 @@
         </div>
     </div>
 
-    <!-- Call to Action -->
     <div class="container mt-4 text-center mb-5">
         <div class="p-5 shadow position-relative overflow-hidden" style="background: linear-gradient(135deg, #0f172a, #1e3a8a); color: white; border-radius: 30px;">
             <div class="position-absolute" style="top: -50px; right: -50px; width: 200px; height: 200px; background: rgba(255,255,255,0.05); border-radius: 50%;"></div>
@@ -80,14 +72,17 @@
     .step-card {
         border: 1px solid rgba(0,0,0,0.03) !important;
     }
-    .step-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 1.5rem 3rem rgba(0,0,0,.1) !important;
-        border-color: rgba(0,0,0,0.05) !important;
-    }
+
+        .step-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 1.5rem 3rem rgba(0,0,0,.1) !important;
+            border-color: rgba(0,0,0,0.05) !important;
+        }
+
     .icon-circle {
         transition: transform 0.3s ease;
     }
+
     .step-card:hover .icon-circle {
         transform: rotate(0deg) scale(1.1) !important;
     }

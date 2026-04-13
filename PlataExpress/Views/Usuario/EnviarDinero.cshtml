@@ -1,18 +1,3 @@
-<<<<<<< HEAD
-﻿<h2>Enviar Dinero</h2>
-
-<form>
-    <label>Destinatario</label>
-    <input type="text" class="form-control" />
-
-    <label>Monto</label>
-    <input type="number" class="form-control" />
-
-    <br />
-
-    <button class="btn btn-primary">Enviar</button>
-</form>
-=======
 ﻿@model PlataExpress.Models.Remesa
 
 <style>
@@ -29,23 +14,28 @@
 		font-weight: bold;
 		padding: 10px;
 	}
-	.btn-nav{
-		border-radius:25px;
-		padding:10px 20px;
-		font-weight:600;
-		transition:0.3s;
+
+	.page-container {
+		margin-bottom: 100px;
 	}
 
-	.btn-nav:hover{
-		transform:translateY(-2px);
-		box-shadow:0 5px 15px rgba(0,0,0,0.15);
+	.btn-nav {
+		border-radius: 25px;
+		padding: 10px 20px;
+		font-weight: 600;
+		transition: 0.3s;
+	}
+
+	.btn-nav:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 5px 15px rgba(0,0,0,0.15);
 	}
 
 	input, select {
 		border-radius: 10px;
 	}</style>
 
-<div class="container mt-4">
+	<div class="container mt-4 page-container">
 
 	<h2 class="mb-4">💸 Enviar dinero</h2>
 
@@ -86,14 +76,15 @@
 						<label>Comisión</label>
 						<input type="number" class="form-control" asp-for="Comision" />
 					</div>
-						<button class="btn btn-primary w-100"
-								onclick="return confirmarEnvio()">
-							Enviar dinero
-						</button>
-						<div class="mt-4 d-flex justify-content-between">
+
+					<button class="btn btn-primary w-100"
+						onclick="return confirmarEnvio()">
+						Enviar dinero
+					</button>
+						<div class="mt-4 text-center">
 
 							<a asp-controller="Usuario" asp-action="PanelUsuario"
-								   class="btn btn-outline-secondary btn-nav">
+								   class="btn btn-outline-secondary btn-nav me-3">
 
 								⬅ Volver al Panel
 
@@ -107,7 +98,6 @@
 							</a>
 
 						</div>
-
 				</form>
 
 			</div>
@@ -160,4 +150,4 @@
 			return confirm("¿Estás seguro de que deseas realizar este envío?");
 		}
 	</script>
->>>>>>> 90e015fbae5f307c3b32c15e8ac073d63bd4ff2a
+
