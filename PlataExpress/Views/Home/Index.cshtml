@@ -4,8 +4,8 @@
 
     decimal montoEnviarSoles = 1000m;
     decimal tipoCambio = 3.77m;
-    bool destinoEnPeru = false; 
-    decimal comisionPorc = 0.05m; 
+    bool destinoEnPeru = false;
+    decimal comisionPorc = 0.03m;
 
     decimal montoComisionSoles = Math.Round(montoEnviarSoles * comisionPorc, 2);
     decimal montoDespuesComisionSoles = Math.Round(montoEnviarSoles - montoComisionSoles, 2);
@@ -22,8 +22,7 @@
         <div class="row align-items-center">
             
             <div class="col-lg-7 pe-lg-5 mb-5 mb-lg-0">
-                <span class="badge bg-primary bg-opacity-10 text-primary mb-3 px-3 py-2 rounded-pill fw-semibold">Empresa registrada en la SBS</span>
-                <h1 class="display-3 fw-bold mb-4" style="letter-spacing: -1.5px;">Envía dinero al exterior<br/><span class="gradient-text">desde cualquier caja del Perú</span></h1>
+                <h1 class="display-3 fw-bold mb-4" style="letter-spacing: -1.5px;">Envía dinero al exterior<br /><span class="gradient-text">de forma directa y rápida</span></h1>
                 <p class="lead text-muted mb-4" style="font-size: 1.15rem; line-height: 1.7;">Realizamos transferencias internacionales mediante nuestros cajeros autorizados. Rápido, confiable y sin complicaciones para tus seres queridos en el extranjero.</p>
 
                 <div class="d-flex flex-wrap gap-3 mt-4 mb-5">
@@ -52,81 +51,24 @@
             </div>
 
             <div class="col-lg-5">
-                <div class="card ref-card border-0 shadow" style="border-radius: 24px; background: white; color: #0f172a;">
-                    <div class="card-body p-5">
-                        <div class="d-flex justify-content-between align-items-center mb-4">
-                            <h5 class="fw-bold mb-0">Cotiza tu envío</h5>
-                            <i class="bi bi-calculator text-primary fs-4"></i>
+                <div class="hero-mockup-container">
+                    <div class="floating-badge badge-security">
+                        <div class="badge-icon">
+                            <i class="bi bi-shield-lock-fill"></i>
                         </div>
+                        <h6 class="fw-bold mb-1">Seguridad nivel bancario</h6>
+                        <p class="small text-muted mb-0">Cifrado de 256 bits</p>
+                    </div>
 
-                        <div class="p-4 rounded-4 bg-light mb-4 position-relative border transition" id="calcContainer" style="transition: all 0.3s ease;">
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <div>
-                                    <label for="sendAmount" class="small fw-semibold text-muted mb-1 cursor-pointer">Tú envías</label>
-                                    <div class="fw-bold text-dark mb-0 d-flex align-items-center">
-                                        <span class="fs-5 me-1 text-muted">S/</span> 
-                                        <input type="number" id="sendAmount" class="form-control border-0 fw-bold p-0 shadow-none bg-transparent" value="1000" min="10" step="10" style="width: 140px; font-size: 2rem; color: #0f172a;">
-                                    </div>
-                                </div>
-                                <div class="text-end">
-                                    <div class="badge bg-white text-dark border px-3 py-2 rounded-pill shadow-sm d-flex align-items-center">
-                                        <img src="https://flagcdn.com/w20/pe.png" alt="Perú" class="me-2" style="width: 20px; border-radius: 2px;">
-                                        <span class="fw-bold" style="font-size: 14px;">PEN</span>
-                                    </div>
-                                </div>
-                            </div>
+                    <img src="~/img/app-mockup.png" 
+                         alt="PlataExpress App" class="floating-mockup img-fluid" asp-append-version="true" />
 
-                            <div class="position-absolute top-50 start-50 translate-middle" style="z-index: 2;">
-                                <div class="bg-white border rounded-circle shadow-sm d-flex align-items-center justify-content-center text-primary" style="width: 44px; height: 44px;">
-                                    <i class="bi bi-arrow-down-up fw-bold"></i>
-                                </div>
-                            </div>
-
-                            <hr class="my-4 opacity-10">
-
-                            <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
-                                <div>
-                                    <div class="small fw-semibold text-muted mb-1">Ellos reciben</div>
-                                    <div class="fw-bold text-success mb-0 d-flex align-items-center" style="word-break: break-word;">
-                                        <span class="fs-5 me-1 text-success opacity-75" id="receiveSymbol">$</span> 
-                                        <span id="receiveAmount" style="font-size: 1.8rem; line-height: 1.2;">251.99</span>
-                                    </div>
-                                </div>
-                                <div class="text-end">
-                                    <div class="badge bg-white text-dark border p-1 rounded-pill shadow-sm d-flex align-items-center" style="max-width: 150px;">
-                                        <img id="flagImg" src="https://flagcdn.com/w20/us.png" alt="Destino" class="ms-2 me-1" style="width: 20px; border-radius: 2px;">
-                                        <select id="targetCountry" class="form-select border-0 shadow-none py-1 pe-4 ps-1 fw-bold text-dark" style="background-color: transparent; font-size: 13px; cursor: pointer; text-overflow: ellipsis;">
-                                            <option value="USD">EE.UU / Ecu</option>
-                                            <option value="COP">Colombia</option>
-                                            <option value="EUR">España</option>
-                                            <option value="MXN">México</option>
-                                            <option value="CLP">Chile</option>
-                                            <option value="ARS">Argentina</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
+                    <div class="floating-badge badge-speed">
+                        <div class="badge-icon" style="background: #10b981;">
+                            <i class="bi bi-lightning-fill"></i>
                         </div>
-
-                        <div class="info-list mb-4 px-2">
-                            <div class="d-flex justify-content-between align-items-center mb-2">
-                                <div class="text-muted small fw-medium"><i class="bi bi-currency-exchange me-2 text-primary"></i>Tipo de cambio hoy</div>
-                                <div class="fw-semibold small text-dark" id="rateText">1 USD = S/ 3.77</div>
-                            </div>
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <div class="text-muted small fw-medium"><i class="bi bi-percent me-2 text-primary"></i>Comisión del servicio (5%)</div>
-                                <div class="fw-semibold small text-danger" id="commissionText">- S/ 50.00</div>
-                            </div>
-                            <div class="alert alert-warning border-0 bg-warning bg-opacity-10 d-flex align-items-center p-3 mb-0 rounded-3">
-                                <i class="bi bi-info-circle-fill text-warning me-3 fs-5"></i>
-                                <span class="small text-dark mb-0" style="font-size: 0.8rem; line-height: 1.4;">Referencia visual. El tipo de cambio y comisión exactos se validarán al generar la liquidación.</span>
-                            </div>
-                        </div>
-
-                        <a asp-controller="loginYRegistro" asp-action="Register" class="btn btn-primary btn-lg w-100 fw-bold rounded-pill py-3 shadow-sm d-flex justify-content-center align-items-center gap-2" style="transition: transform 0.2s;">
-                            <span>Registrarme para enviar</span>
-                            <i class="bi bi-send-fill"></i>
-                        </a>
+                        <h6 class="fw-bold mb-1">Envío instantáneo</h6>
+                        <p class="small text-muted mb-0">Llega en segundos o en<br /> minutos depende del<br /> lugar de destino</p>
                     </div>
                 </div>
             </div>
@@ -134,74 +76,13 @@
     </div>
 </div>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const sendAmountInput = document.getElementById("sendAmount");
-        const targetCountrySelect = document.getElementById("targetCountry");
-        const receiveAmountSpan = document.getElementById("receiveAmount");
-        const receiveSymbolSpan = document.getElementById("receiveSymbol");
-        const flagImg = document.getElementById("flagImg");
-        const rateText = document.getElementById("rateText");
-        const commissionText = document.getElementById("commissionText");
-
-        const exchangeRates = {
-            "USD": { rate: 3.77, type: "divide", symbol: "$", code: "USD", flag: "us" },
-            "COP": { rate: 1020, type: "multiply", symbol: "$", code: "COP", flag: "co" },
-            "EUR": { rate: 4.10, type: "divide", symbol: "€", code: "EUR", flag: "es" },
-            "MXN": { rate: 4.35, type: "multiply", symbol: "$", code: "MXN", flag: "mx" },
-            "CLP": { rate: 250, type: "multiply", symbol: "$", code: "CLP", flag: "cl" },
-            "ARS": { rate: 260, type: "multiply", symbol: "$", code: "ARS", flag: "ar" }
-        };
-
-        const COMMISSION_RATE = 0.05; 
-
-        function formatCurrency(amount) {
-            return amount.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-        }
-
-        function calculate() {
-            let amount = parseFloat(sendAmountInput.value);
-            if (isNaN(amount) || amount <= 0) {
-                receiveAmountSpan.textContent = "0.00";
-                commissionText.textContent = "- S/ 0.00";
-                return;
-            }
-
-            const country = targetCountrySelect.value;
-            const data = exchangeRates[country];
-
-            const commission = amount * COMMISSION_RATE;
-            const amountToSend = amount - commission;
-            
-            let received = 0;
-            if (data.type === "divide") {
-                received = amountToSend / data.rate;
-                rateText.textContent = `1 ${data.code} = S/ ${data.rate.toFixed(2)}`;
-            } else {
-                received = amountToSend * data.rate;
-                rateText.textContent = `1 PEN = ${data.rate.toLocaleString()} ${data.code}`;
-            }
-
-            receiveAmountSpan.textContent = formatCurrency(received);
-            receiveSymbolSpan.textContent = data.symbol;
-            commissionText.textContent = `- S/ ${formatCurrency(commission)}`;
-            flagImg.src = `https://flagcdn.com/w20/${data.flag}.png`;
-        }
-
-        sendAmountInput.addEventListener("input", calculate);
-        targetCountrySelect.addEventListener("change", calculate);
-
-        calculate();
-    });
-</script>
-
 <section class="about-section py-5 mt-5 border-top bg-white">
     <div class="container" style="max-width: 1100px;">
         <div class="row align-items-center">
             <div class="col-lg-5 mb-5 mb-lg-0 pe-lg-5">
-                <span class="text-primary fw-bold text-uppercase small mb-2 d-block tracking-wider">Por qué elegirnos</span>
+                <span class="text-primary fw-bold text-uppercase small mb-2 d-block tracking-wider">Trato directo y transparente</span>
                 <h2 class="h2 fw-bold mb-4">Sobre PlataExpress</h2>
-                <p class="text-muted mb-4" style="line-height: 1.8;">PlataExpress es una empresa peruana especializada en enviar dinero al exterior desde cualquier caja o punto autorizado. Ofrecemos giros y depósitos internacionales rápidos y seguros, con atención personalizada y años de experiencia en el mercado.</p>
+                <p class="text-muted mb-4" style="line-height: 1.8;">PlataExpress es una iniciativa independiente dedicada a facilitar el envío de dinero al exterior. Nos enfocamos en ofrecer un servicio ágil, sin la burocracia de las grandes instituciones, garantizando que tu apoyo llegue a donde más se necesita con total discreción y eficiencia.</p>
                 <ul class="list-unstyled text-muted mb-4">
                     <li class="mb-3 d-flex align-items-center"><i class="bi bi-check-circle-fill text-success mx-2"></i> Envíos por giro o depósito bancario</li>
                     <li class="mb-3 d-flex align-items-center"><i class="bi bi-check-circle-fill text-success mx-2"></i> Cobertura a más de 30 países</li>

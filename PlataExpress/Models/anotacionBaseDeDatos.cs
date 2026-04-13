@@ -2,8 +2,7 @@
 {
     public class anotacionBaseDeDatos
     {
-<<<<<<< HEAD
-=======
+
         public static List<Remesa> Remesas = new List<Remesa>()
         {
             new Remesa
@@ -57,6 +56,6 @@
 },
 )
 */
->>>>>>> 90e015fbae5f307c3b32c15e8ac073d63bd4ff2a
+
     }
 }

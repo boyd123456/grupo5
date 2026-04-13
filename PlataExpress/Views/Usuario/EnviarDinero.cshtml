@@ -1,4 +1,7 @@
-<<<<<<< HEAD
+﻿
+@model PlataExpress.Models.Remesa;
+
+
 ﻿<h2>Enviar Dinero</h2>
 
 <form>
@@ -12,8 +15,8 @@
 
     <button class="btn btn-primary">Enviar</button>
 </form>
-=======
-﻿@model PlataExpress.Models.Remesa
+
+
 
 <style>
 	.card {
@@ -61,7 +64,7 @@
 
 					<div class="mb-3">
 						<label>Tipo de operación</label>
-						<select class="form-control" asp-for="TipoOperacion">
+						<select class="form-control" ,lasp-for="TipoOperacion">
 							<option>Transferencia</option>
 							<option>Depósito</option>
 						</select>
@@ -69,22 +72,22 @@
 
 					<div class="mb-3">
 						<label>Nombre del destinatario</label>
-						<input type="text" class="form-control" asp-for="Nombre" />
+						<input type="text",class="form-control",asp-for="Nombre" />
 					</div>
 
 					<div class="mb-3">
 						<label>Agencia o país destino</label>
-						<input type="text" class="form-control" asp-for="Agencia" />
+						<input type="text",class="form-control" ,asp-for="Agencia" />
 					</div>
 
 					<div class="mb-3">
 						<label>Monto a enviar</label>
-						<input type="number" class="form-control" asp-for="Monto" />
+						<input type="number" ,class="form-control",asp-for="Monto" />
 					</div>
 
 					<div class="mb-3">
 						<label>Comisión</label>
-						<input type="number" class="form-control" asp-for="Comision" />
+						<input type="number" ,class="form-control" ,lasp-for="Comision" />
 					</div>
 						<button class="btn btn-primary w-100"
 								onclick="return confirmarEnvio()">
@@ -160,4 +163,4 @@
 			return confirm("¿Estás seguro de que deseas realizar este envío?");
 		}
 	</script>
->>>>>>> 90e015fbae5f307c3b32c15e8ac073d63bd4ff2a
+
