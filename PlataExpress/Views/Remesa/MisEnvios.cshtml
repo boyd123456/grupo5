@@ -1,4 +1,5 @@
 @model List<PlataExpress.Models.Remesa>
+
 @if (TempData["mensaje"] != null)
 {
     <div class="alert alert-success text-center">
@@ -31,15 +32,6 @@
         Aquí puedes consultar el historial de todas tus transferencias realizadas.
     </p>
 
-
-    @if (Model.Count == 0)
-    {
-        <div class="alert alert-info">
-            Aún no tienes envíos registrados.
-        </div>
-    }
-
-
     <table class="table table-bordered shadow">
 
         <thead class="table-dark">
@@ -55,33 +47,37 @@
 
         <tbody>
 
-            @foreach (var item in Model)
-            {
-                <tr>
+                @if (Model != null && Model.Count > 0)
+                {
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Nombre</td>
+                            <td>@item.Agencia</td>
+                            <td>S/ @item.Monto</td>
+                            <td>S/ @item.Comision</td>
+                            <td>@item.FechaEnvio.ToString("dd/MM/yyyy HH:mm")</td>
+                            <td>
+                                @if (item.Estado == "Enviado")
+                                {
+                                    <span class="badge bg-warning">En proceso</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-success">Completado</span>
+                                }
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="6" class="text-center">No tienes envíos registrados</td>
+                    </tr>
+                }
 
-                    <td>@item.Nombre</td>
-                    <td>@item.Agencia</td>
-                    <td>S/ @item.Monto</td>
-                    <td>S/ @item.Comision</td>
-                    <td>@item.FechaEnvio</td>
-
-                    <td>
-
-                        @if (item.Estado == "En proceso")
-                        {
-                            <span class="badge bg-warning">En proceso</span>
-                        }
-                        else
-                        {
-                            <span class="badge bg-success">Completado</span>
-                        }
-
-                    </td>
-
-                </tr>
-            }
-
-        </tbody>
+            </tbody>
 
     </table>
 
@@ -95,7 +91,7 @@
         </a>
 
 
-        <a asp-controller="Usuario" asp-action="EnviarDinero"
+        <a asp-controller="Remesa" asp-action="EnviarDinero"
                class="btn btn-primary">
 
             💸 Nueva Transacción

@@ -1,4 +1,4 @@
-﻿@model PlataExpress.Models.Remesa
+@model PlataExpress.Models.Remesa
 
 <style>
 	.card {
@@ -47,40 +47,36 @@
 
 				<h4>Datos del envío</h4>
 
-				<form method="post">
+					<form method="post" asp-action="EnviarDinero" asp-controller="Remesa">
 
-					<div class="mb-3">
-						<label>Tipo de operación</label>
-						<select class="form-control" asp-for="TipoOperacion">
-							<option>Transferencia</option>
-							<option>Depósito</option>
-						</select>
-					</div>
+						<div class="mb-3">
+							<label>Tipo de operación</label>
+							<select class="form-control" asp-for="TipoOperacion">
+								<option value="Transferencia">Transferencia</option>
+								<option value="Depósito">Depósito</option>
+							</select>
+						</div>
 
-					<div class="mb-3">
-						<label>Nombre del destinatario</label>
-						<input type="text" class="form-control" asp-for="Nombre" />
-					</div>
+						<div class="mb-3">
+							<label>Nombre del destinatario</label>
+							<input type="text" class="form-control" asp-for="Nombre" required />
+						</div>
 
-					<div class="mb-3">
-						<label>Agencia o país destino</label>
-						<input type="text" class="form-control" asp-for="Agencia" />
-					</div>
+						<div class="mb-3">
+							<label>Agencia o país destino</label>
+							<input type="text" class="form-control" asp-for="Agencia" required />
+						</div>
 
-					<div class="mb-3">
-						<label>Monto a enviar</label>
-						<input type="number" class="form-control" asp-for="Monto" />
-					</div>
+						<div class="mb-3">
+							<label>Monto a enviar</label>
+							<input type="number" step="0.01" class="form-control" asp-for="Monto" required />
+						</div>
 
-					<div class="mb-3">
-						<label>Comisión</label>
-						<input type="number" class="form-control" asp-for="Comision" />
-					</div>
+						<button type="submit" class="btn btn-primary w-100"
+								onclick="return confirmarEnvio()">
+							Enviar dinero
+						</button>
 
-					<button class="btn btn-primary w-100"
-						onclick="return confirmarEnvio()">
-						Enviar dinero
-					</button>
 						<div class="mt-4 text-center">
 
 							<a asp-controller="Usuario" asp-action="PanelUsuario"
@@ -90,7 +86,7 @@
 
 							</a>
 
-							<a asp-controller="Usuario" asp-action="MisEnvios"
+							<a asp-controller="Remesa" asp-action="MisEnvios"
 								   class="btn btn-outline-primary btn-nav">
 
 								📄 Ver mis envíos

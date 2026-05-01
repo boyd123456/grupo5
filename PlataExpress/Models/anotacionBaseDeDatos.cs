@@ -3,32 +3,7 @@
     public class anotacionBaseDeDatos
     {
 
-        public static List<Remesa> Remesas = new List<Remesa>()
-        {
-            new Remesa
-            {
-                IdRemesa = 1,
-                TipoOperacion = "Envío",
-                Nombre = "Juan Perez",
-                Agencia = "Lima Centro",
-                Monto = 200,
-                Comision = 10,
-                FechaEnvio = DateTime.Now,
-                Estado = "En proceso"
-            },
 
-            new Remesa
-            {
-                IdRemesa = 2,
-                TipoOperacion = "Envío",
-                Nombre = "Maria Lopez",
-                Agencia = "San Isidro",
-                Monto = 350,
-                Comision = 15,
-                FechaEnvio = DateTime.Now,
-                Estado = "Completado"
-            }
-        };
 
         /*CREATE TABLE [dbo].[Usuarios]
 (
@@ -43,7 +18,19 @@
     [Rol] VARCHAR(50) NOT NULL, 
     [FechaRegistro] DATETIME NOT NULL DEFAULT GETDATE()
 
-
+    CREATE TABLE [dbo].[Remesas] (
+    [IdRemesa]      INT             IDENTITY (1, 1) NOT NULL,
+    [IdUsuario]     INT             NOT NULL,
+    [TipoOperacion] VARCHAR (50)    NOT NULL,
+    [Nombre]        VARCHAR (100)   NOT NULL,
+    [Agencia]       VARCHAR (100)   NOT NULL,
+    [Monto]         DECIMAL (10, 2) NOT NULL,
+    [Comision]      DECIMAL (10, 2) NOT NULL,
+    [FechaEnvio]    DATETIME        NOT NULL,
+    [Estado]        VARCHAR (50)    NOT NULL,
+    PRIMARY KEY CLUSTERED ([IdRemesa] ASC),
+    FOREIGN KEY ([IdUsuario]) REFERENCES [dbo].[Usuarios] ([IdUsuario])
+);
 
 
         ------------------------------------

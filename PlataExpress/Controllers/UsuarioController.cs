@@ -1,19 +1,40 @@
 using Microsoft.AspNetCore.Mvc;
-
+using PlataExpress.Data;
 using PlataExpress.Models;
 
 
 namespace PlataExpress.Controllers
 {
+
     public class UsuarioController : Controller
     {
-        public IActionResult PanelUsuario(string NombreDeUsuario)
+        private readonly RemesaRepository _repo;
+
+        public UsuarioController(RemesaRepository repo)
         {
-            var model = new PlataExpress.Models.LoginViewModel { 
-                NombreDeUsuario = !string.IsNullOrEmpty(NombreDeUsuario) ? NombreDeUsuario : "Invitado" 
+            _repo = repo;
+        }
+
+        public async Task<IActionResult> PanelUsuario()
+        {
+            var idUsuarioStr = HttpContext.Session.GetString("IdUsuario");
+
+            if (string.IsNullOrEmpty(idUsuarioStr))
+                return RedirectToAction("Login", "Auth");
+
+            int idUsuario = Convert.ToInt32(idUsuarioStr);
+
+            var model = new DashboardViewModel
+            {
+                TotalEnvios = await _repo.ObtenerTotalEnvios(idUsuario),
+                TotalMonto = await _repo.ObtenerTotalMonto(idUsuario),
+                EnProceso = await _repo.ObtenerEnProceso(idUsuario),
+                UltimosEnvios = await _repo.ObtenerUltimosEnvios(idUsuario)
             };
+
             return View(model);
         }
+
 
 
         [HttpGet]
@@ -41,9 +62,7 @@ namespace PlataExpress.Controllers
 
         public IActionResult MisEnvios()
         {
-            var lista = anotacionBaseDeDatos.Remesas;
-
-            return View(lista);
+            return View();
 
         }
 

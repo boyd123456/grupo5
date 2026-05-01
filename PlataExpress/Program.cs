@@ -4,7 +4,7 @@
 using PlataExpress.Data;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddScoped<loginyRegisterRepositori>();
-
+builder.Services.AddScoped<RemesaRepository>();
 
 
 

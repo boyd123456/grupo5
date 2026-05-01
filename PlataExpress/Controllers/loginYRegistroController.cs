@@ -111,6 +111,7 @@ namespace PlataExpress.Controllers
 
             if (usuario != null)
             {
+                HttpContext.Session.SetString("IdUsuario", usuario.IdUsuario.ToString());
                 HttpContext.Session.SetString("Usuario", usuario.Usuario);
                 if (usuario.Rol == "Admin")
                 {
