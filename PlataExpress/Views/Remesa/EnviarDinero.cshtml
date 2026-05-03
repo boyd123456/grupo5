@@ -47,8 +47,7 @@
 
 				<h4>Datos del envío</h4>
 
-					<form method="post" asp-action="EnviarDinero" asp-controller="Remesa">
-
+					<form method="post" asp-controller="Remesa" asp-action="EnviarDinero">
 						<div class="mb-3">
 							<label>Tipo de operación</label>
 							<select class="form-control" asp-for="TipoOperacion">
@@ -59,18 +58,22 @@
 
 						<div class="mb-3">
 							<label>Nombre del destinatario</label>
-							<input type="text" class="form-control" asp-for="Nombre" required />
+							<input type="text" class="form-control" asp-for="UsuarioDestino" onkeypress="soloLetras(event)" />
+							<span asp-validation-for="UsuarioDestino" class="text-danger"></span>
 						</div>
 
 						<div class="mb-3">
-							<label>Agencia o país destino</label>
-							<input type="text" class="form-control" asp-for="Agencia" required />
+							<label>Agencia</label>
+							<input type="text" class="form-control" asp-for="Agencia" onkeypress="soloLetras(event)" />
+							<span asp-validation-for="Agencia" class="text-danger"></span>
 						</div>
 
 						<div class="mb-3">
-							<label>Monto a enviar</label>
-							<input type="number" step="0.01" class="form-control" asp-for="Monto" required />
+							<label>Monto</label>
+							<input type="number" step="0.01" min="0.01" class="form-control" asp-for="Monto" />
+							<span asp-validation-for="Monto" class="text-danger"></span>
 						</div>
+
 
 						<button type="submit" class="btn btn-primary w-100"
 								onclick="return confirmarEnvio()">
@@ -140,10 +143,27 @@
 	</div>
 
 </div>
-
+	<script>
+		if (idDestino == null)
+		{
+			ModelState.AddModelError("", "El usuario destino no existe");
+			return View(model);
+		}
+	</script>
 	<script>
 		function confirmarEnvio() {
 			return confirm("¿Estás seguro de que deseas realizar este envío?");
 		}
 	</script>
+	<script>
+		function soloLetras(e) {
+			let tecla = e.key;
+			let regex = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]$/;
+
+			if (!regex.test(tecla)) {
+				e.preventDefault();
+			}
+		}
+	</script>
+	
 

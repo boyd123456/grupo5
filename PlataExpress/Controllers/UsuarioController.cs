@@ -28,7 +28,7 @@ namespace PlataExpress.Controllers
             {
                 TotalEnvios = await _repo.ObtenerTotalEnvios(idUsuario),
                 TotalMonto = await _repo.ObtenerTotalMonto(idUsuario),
-                EnProceso = await _repo.ObtenerEnProceso(idUsuario),
+                Saldo = await _repo.ObtenerSaldo(idUsuario),
                 UltimosEnvios = await _repo.ObtenerUltimosEnvios(idUsuario)
             };
 
@@ -65,10 +65,33 @@ namespace PlataExpress.Controllers
             return View();
 
         }
-
-        public IActionResult EstadoOperacion()
+        //panel Para recarga de saldo
+        public IActionResult RecargarSaldo()
         {
             return View();
         }
+        [HttpPost]
+        public async Task<IActionResult> RecargarSaldo(decimal monto)
+        {
+            var idUsuarioStr = HttpContext.Session.GetString("IdUsuario");
+
+            if (string.IsNullOrEmpty(idUsuarioStr))
+                return RedirectToAction("Login", "Auth");
+
+            if (monto <= 0)
+            {
+                ModelState.AddModelError("", "El monto debe ser mayor a 0");
+                return View();
+            }
+
+            int idUsuario = Convert.ToInt32(idUsuarioStr);
+
+            await _repo.RecargarSaldo(idUsuario, monto);
+
+            TempData["mensaje"] = "Saldo recargado correctamente 💰";
+
+            return RedirectToAction("PanelUsuario");
+        }
+
     }
 }

@@ -13,7 +13,6 @@ namespace PlataExpress.Controllers
             _repo = repo;
         }
 
-        // FORMULARIO
         public IActionResult EnviarDinero()
         {
             return View();
@@ -22,25 +21,70 @@ namespace PlataExpress.Controllers
         [HttpPost]
         public async Task<IActionResult> EnviarDinero(Remesa model)
         {
+            if (!ModelState.IsValid)
+                return View(model);
+
             var idUsuarioStr = HttpContext.Session.GetString("IdUsuario");
 
             if (string.IsNullOrEmpty(idUsuarioStr))
                 return RedirectToAction("Login", "Auth");
 
-            model.IdUsuario = Convert.ToInt32(idUsuarioStr);
-            model.FechaEnvio = DateTime.Now;
-            model.Estado = "Enviado";
+            int idOrigen = Convert.ToInt32(idUsuarioStr);
 
-            // 💰 AQUÍ se calcula
-            model.Comision = model.Monto * 0.05m;
+            if (string.IsNullOrEmpty(model.UsuarioDestino))
+            {
+                ModelState.AddModelError("", "Debe ingresar un usuario destino");
+                return View(model);
+            }
 
-            await _repo.EnviarRemesaAsync(model);
+            var idDestino = await _repo.ObtenerIdUsuarioPorUsuario(model.UsuarioDestino);
 
+            if (idDestino == null)
+            {
+                ModelState.AddModelError("", "El usuario destino no existe");
+                return View(model);
+            }
+            decimal saldo = await _repo.ObtenerSaldo(idOrigen);
+
+            if (saldo < model.Monto)
+            {
+                ModelState.AddModelError("", "Saldo insuficiente");
+                return View(model);
+            }
+
+            try
+            {
+                await _repo.TransferirDinero(idOrigen, idDestino.Value, model.Monto);
+
+                // 🔴 COMPLETAR TODOS LOS CAMPOS
+                model.IdUsuario = idOrigen;
+                model.TipoOperacion = "Transferencia";
+                model.Nombre = model.UsuarioDestino;
+                model.Agencia = "Online";
+                model.FechaEnvio = DateTime.Now;
+                model.Estado = "Enviado";
+                model.Comision = model.Monto * 0.05m;
+
+                // 🔴 VALIDAR SI SE GUARDÓ
+                var resultado = await _repo.EnviarRemesaAsync(model);
+
+                if (!resultado)
+                {
+                    ModelState.AddModelError("", "No se pudo guardar la remesa");
+                    return View(model);
+                }
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", "Error al procesar el envío: " + ex.Message);
+                return View(model);
+            }
+
+            TempData["mensaje"] = "Envío realizado correctamente 💸";
 
             return RedirectToAction("MisEnvios", "Remesa");
         }
 
-        // HISTORIAL
         public async Task<IActionResult> Historial()
         {
             int idUsuario = Convert.ToInt32(HttpContext.Session.GetString("IdUsuario"));
@@ -62,7 +106,7 @@ namespace PlataExpress.Controllers
 
             return View(lista);
         }
-
+        
     }
 
 }

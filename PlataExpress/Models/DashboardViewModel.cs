@@ -6,5 +6,7 @@
         public decimal TotalMonto { get; set; }
         public int EnProceso { get; set; }
         public List<Remesa> UltimosEnvios { get; set; }
+        public decimal Saldo { get; set; }
+
     }
 }

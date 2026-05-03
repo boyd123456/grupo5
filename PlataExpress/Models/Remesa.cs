@@ -6,6 +6,8 @@ namespace PlataExpress.Models
     {
         public int IdRemesa { get; set; }
         public int IdUsuario { get; set; }
+        public string NombreUsuario { get; set; } = string.Empty;
+        public string UsuarioDestino { get; set; } = string.Empty;
 
         [Required]
         [RegularExpression(@"^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$", ErrorMessage = "Solo letras permitidas")]

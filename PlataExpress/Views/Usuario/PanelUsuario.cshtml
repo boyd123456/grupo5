@@ -34,7 +34,7 @@
     <div class="container mt-4">
 
         <div class="p-4 mb-4 bg-light rounded shadow-sm">
-            <h2>👋 Bienvenido @usuario</h2>
+        <h2>👋 Bienvenido @(string.IsNullOrEmpty(usuario) ? "Usuario" : usuario)</h2>
             <p>Desde aquí puedes gestionar tus envíos internacionales de forma rápida y segura.</p>
         </div>
 
@@ -57,8 +57,8 @@
 
             <div class="col-md-4">
                 <div class="card shadow p-3">
-                <h3>@Model.EnProceso</h3>
-                    <p>Operaciones en proceso</p>
+                <h3>S/ @Model.Saldo.ToString("N2")</h3>
+                <p>Saldo disponible</p>
                 </div>
             </div>
 
@@ -94,13 +94,10 @@
 
             <div class="col-md-4">
                 <div class="card shadow-lg p-4 text-center">
-
-                    <h4>🔎 Estado</h4>
-                    <p>Revisa el estado de tus operaciones.</p>
-
-                    <a asp-controller="Usuario" asp-action="EstadoOperacion"
-                       class="btn btn-warning">Consultar</a>
-
+                <h4>💳 Recargar saldo</h4>
+                <p>Agrega dinero a tu billetera</p>
+                <a asp-controller="Usuario" asp-action="RecargarSaldo"
+                   class="btn btn-info">Recargar</a>
                 </div>
             </div>
 
@@ -111,6 +108,7 @@
         <table class="table table-bordered shadow">
 
             <tr>
+			    <th>Remitente</th>
                 <th>Destinatario</th>
                 <th>País</th>
                 <th>Monto</th>
@@ -120,18 +118,12 @@
         @foreach (var item in Model.UltimosEnvios)
         {
             <tr>
+                <td>@item.NombreUsuario</td>
                 <td>@item.Nombre</td>
                 <td>@item.Agencia</td>
                 <td>$@item.Monto</td>
                 <td>
-                    @if (item.Estado == "Enviado")
-                    {
-                        <span class="badge bg-warning">En proceso</span>
-                    }
-                    else
-                    {
-                        <span class="badge bg-success">Completado</span>
-                    }
+                    <span class="badge bg-primary">@item.Estado</span>
                 </td>
             </tr>
         }
@@ -139,8 +131,6 @@
 
         </table>
 
-
-        <!-- INFORMACION -->
         <div class="alert alert-info mt-4">
 
             💡 <strong>Consejo:</strong> Mantén tus datos actualizados para evitar retrasos en tus envíos internacionales.
